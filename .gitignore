@@ -1,0 +1,69 @@
+# Kiro SPECS generated files and directories
+.specs/backups/db/
+.specs/*/session-context.md
+NEXT_SESSION.md
+
+# Temporary files
+*.tmp
+*.temp
+.temp/
+temp/
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs and runtime files
+*.log
+logs/
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage and testing
+coverage/
+.nyc_output
+.coverage
+*.cover
+.pytest_cache/
+
+# Dependencies (if any)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Documentation build files
+docs/_build/
+site/
+
+# Backup files
+*.bak
+*.backup
+backup/
+
+# Personal notes and drafts
+notes.md
+draft*.md
+personal/
+private/
