@@ -1,15 +1,4 @@
-# Kiro SPECS generated files and directories
-.specs/backups/db/
-.specs/*/session-context.md
-NEXT_SESSION.md
-
-# Temporary files
-*.tmp
-*.temp
-.temp/
-temp/
-
-# Operating System files
+# OS generated files
 .DS_Store
 .DS_Store?
 ._*
@@ -17,53 +6,45 @@ temp/
 .Trashes
 ehthumbs.db
 Thumbs.db
+desktop.ini
 
-# IDE and Editor files
-.vscode/
+# Editor directories and files
 .idea/
+.vscode/
 *.swp
 *.swo
 *~
+.project
+.classpath
+.settings/
 
-# Logs and runtime files
-*.log
-logs/
-pids/
-*.pid
-*.seed
-*.pid.lock
+# Claude Code local settings
+.claude/settings.local.json
 
-# Coverage and testing
-coverage/
-.nyc_output
-.coverage
-*.cover
-.pytest_cache/
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.env
 
-# Dependencies (if any)
+# Node
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Documentation build files
-docs/_build/
-site/
-
-# Backup files
-*.bak
+# Project specific
+.specs/
 *.backup
-backup/
+*.tmp
+*.log
 
-# Personal notes and drafts
-notes.md
-draft*.md
-personal/
-private/
+# Exclude examples from tracking actual development
+examples/.specs/
+
+# Keep templates clean
+!templates/**/.gitkeep
