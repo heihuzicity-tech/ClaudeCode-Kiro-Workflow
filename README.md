@@ -27,13 +27,16 @@ This system uses Claude Code's `.claude/commands` mechanism, providing a simplif
 
 ## ✨ Key Features
 
-1. **AI-Guided Workflow** - Automatic progression through Requirements → Design → Tasks → Execution
-2. **Minimal Command System** - Only 7 essential commands to remember
+1. **AI-Guided Workflow** - Automatic progression through Requirements → Design → Tasks → Execution → Completion
+2. **Comprehensive Command System** - 9 powerful commands covering full development lifecycle
 3. **Native Chinese Support** - Natural and fluent Chinese interaction with AI
 4. **Automatic Database Backup** - Intelligent detection and proactive database backup before development
 5. **Git Branch Isolation** - Automatic feature branch creation, protecting main branch
-6. **Session Continuity** - Seamless context preservation across sessions with breakpoint recovery
+6. **Enhanced Session Management** - Persistent session saving to .specs/session.md with auto-recovery
 7. **Real-time Progress Tracking** - Task status updates with automatic persistence
+8. **Intelligent File Archiving** - Auto-organization of test/debug/temp files on project completion
+9. **Deep Thinking Mode** - Three-level analysis system for complex problems (v1/v2/v3)
+10. **Smart Confirmation System** - Commands execute directly, discussions require confirmation
 
 ## 📋 Commands
 
@@ -42,10 +45,12 @@ This system uses Claude Code's `.claude/commands` mechanism, providing a simplif
 | `/kiro-start [feature]` | Start new SPECS workflow (auto-guides through phases) | `/kiro-start user-login` |
 | `/kiro-next` | Execute next uncompleted task | `/kiro-next` |
 | `/kiro-info [info]` | Save project context to `.specs/project-info.md` | `/kiro-info "MySQL DB, React 18"` |
+| `/kiro-status` | View current project status and progress | `/kiro-status` |
+| `/kiro-think [v1/v2/v3]` | Deep thinking and discussion mode | `/kiro-think v2 architecture` |
 | `/kiro-save` | Save progress and generate session file | `/kiro-save` |
+| `/kiro-load` | Auto-load saved session state | `/kiro-load` |
 | `/kiro-end` | Complete feature (update docs, generate summary, merge) | `/kiro-end` |
 | `/kiro-git` | Immediately commit current changes | `/kiro-git` |
-| `/kiro-change` | Return to planning workflow for requirement changes | `/kiro-change` |
 
 ## 🔄 Workflow Phases
 
@@ -78,7 +83,19 @@ This system uses Claude Code's `.claude/commands` mechanism, providing a simplif
 - Must read all SPECS documents before execution
 - Real-time progress updates in tasks.md
 - Automatic task status synchronization
+- **Enhanced Rules**: 
+  - Always use bash/shell scripts, never bat/ps1/PowerShell
+  - Ask user to kill conflicting processes instead of changing ports
+  - Use service management scripts (npm run, make) over direct commands
 - **Key Constraints**: Clear separation from planning phase, execute only one task at a time, wait for user instruction after completion
+
+### Phase 5: Feature Completion
+**Goal**: Clean project closure with intelligent archiving
+- Mark session as completed with timestamp
+- Archive scattered test/debug/temp files to `.specs/{feature}/`
+- Move session.md to feature directory for history preservation
+- Generate comprehensive summary document
+- **Key Constraints**: Never delete session data, require confirmation for file archiving, protect system files
 
 ## 💡 Usage Examples
 
@@ -157,52 +174,89 @@ AI: Executing task 1.2: Implement login endpoint...
 User: /kiro-save
 
 AI: Saving progress...
-    Session file generated: .specs/user-login/session_2.1.md
+    Session state saved to: .specs/session.md
     Progress committed to git
     
     === Next Session Prompt ===
     I am developing user-login using Kiro SPECS
-    Please read .specs/user-login/session_2.1.md to continue development
+    Session state saved to: .specs/session.md
     
-    Continue with: /kiro-next
+    Please load session with: /kiro-load
+    Or manually continue with: /kiro-next
     =====================
 
 --- New Session ---
 
-User: I am developing user-login using Kiro SPECS
-      Please read .specs/user-login/session_2.1.md to continue development
+User: /kiro-load
 
-AI: Loaded project progress. You're developing user-login feature,
-    completed task 2.1, next task is 2.2.
+AI: Loading saved session...
+    Feature: user-login
+    Branch: feature/user-login
+    Progress: Completed task 2.1, next is 2.2
+    
+    Ready to continue with: /kiro-next
 
 User: /kiro-next
 
 AI: Continuing task 2.2: Implement password validation...
 ```
 
-### Handling Requirement Changes
+### Check Project Status
 ```
-User: /kiro-change
+User: /kiro-status
 
-AI: Please describe what needs to be changed:
-
-User: Client requires phone number login support
-
-AI: Understood, adding phone number login. Analyzing impact:
-    - Requirements document: Add phone login requirement
-    - Design document: Update login interface design
-    - Task list: Add 3 related tasks
+AI: ╔════════════════════════════════════════╗
+    ║          KIRO Project Status           ║
+    ╚════════════════════════════════════════╝
     
-    Proceed with this plan?
-
-User: yes
-
-AI: Updating documents...
-    Updated requirements.md
-    Updated design.md
-    Updated tasks.md (preserved completed task status)
+    📁 Project: /workspace/myproject
+    🎯 Feature: user-authentication
+    🌿 Branch: feature/user-authentication
+    📊 Phase: Execution
     
-    Please use /kiro-next to continue development
+    📝 Progress: ████████░░░░  5/10 (50%)
+    
+    ✅ Completed: 5 tasks
+    🔄 Current: Task 2.3 - Create login endpoint
+    ⏳ Remaining: 4 tasks
+    
+    💾 Session: ✅ Up to date
+    📅 Last update: 2025-01-31 15:30
+    
+    Next: /kiro-next to continue
+```
+
+### Deep Thinking and Discussion
+```
+User: /kiro-think v2 how to optimize database performance
+
+AI: 🤔 Deep Thinking: Database Performance Optimization
+    Thinking Level: v2
+    
+    📊 Problem Analysis:
+    - Current bottleneck: Slow query response times
+    - Database size: 50GB with 10M records
+    - Peak load: 1000 queries/second
+    
+    💡 Solutions:
+    
+    Solution A: Index Optimization
+    ✅ Pros: Quick implementation, low risk
+    ❌ Cons: Limited improvement for complex queries
+    
+    Solution B: Read Replicas + Caching
+    ✅ Pros: Significant performance boost
+    ❌ Cons: Higher complexity and cost
+    
+    🎯 Recommendation:
+    Based on analysis, I recommend Solution B for long-term scalability.
+    
+    Shall I proceed with implementing Solution B? Need help with implementation?
+
+User: Yes, proceed with Solution B
+
+AI: Starting implementation...
+    [Begins implementing the agreed solution]
 ```
 
 ## 📁 File Structure
@@ -213,9 +267,15 @@ AI: Updating documents...
 │   ├── requirements.md     # Requirements documentation
 │   ├── design.md          # Technical design
 │   ├── tasks.md           # Implementation tasks and progress tracking
-│   ├── session_*.md       # Session recovery files (e.g., session_2.1.md)
-│   └── summary.md         # Generated on completion
+│   ├── session-{date}.md  # Archived session files (preserved on /kiro-end)
+│   ├── summary.md         # Generated on completion
+│   ├── tests/            # Archived test files from project root
+│   ├── scripts/          # Archived debug/utility scripts
+│   ├── temp/             # Archived temporary files
+│   ├── analysis/         # Archived analysis documents
+│   └── docs/             # Additional documentation
 ├── project-info.md        # Basic project information
+├── session.md            # Current active session (moved on /kiro-end)
 └── backups/db/           # Database backups
     └── {feature}_backup_{timestamp}.sql
 ```
@@ -256,10 +316,20 @@ AI: Updating documents...
 
 ## 🎯 Command Features
 
-- **`/kiro-save`**: Saves progress and generates session recovery file, solving AI session context limitations
-- **`/kiro-end`**: Completes feature development, generates summary document and merges to main branch
+### Core Workflow Commands
+- **`/kiro-start [feature]`**: Start new feature development, auto-create branch and SPECS structure
+- **`/kiro-next`**: Execute next task with automatic progress saving
+- **`/kiro-end`**: Enhanced feature completion with session archiving, file organization, and intelligent cleanup
+
+### Session Management (v1.0.3 Enhanced)
+- **`/kiro-save`**: Save progress and persist to .specs/session.md
+- **`/kiro-load`**: Auto-load session state, restore context
+- **`/kiro-status`**: View project status with clean text output
+
+### Development Support
+- **`/kiro-info [info]`**: Set project information, auto-configure .gitignore
 - **`/kiro-git`**: Quick code commit without updating progress documents
-- **`/kiro-change`**: Intelligently handles requirement changes, automatically updates related documents while preserving completed status
+- **`/kiro-think [v1/v2/v3]`**: Deep thinking mode, replaced /kiro-change
 
 ## 🎨 Best Practices
 

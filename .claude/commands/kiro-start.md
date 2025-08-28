@@ -25,7 +25,7 @@ Based on CLAUDE.md specifications:
 4. Start requirements phase with auto-guidance
    - Create `.specs/{feature_name}/requirements.md`
    - Use hybrid approach for requirements gathering
-   - Request approval: "需求包含以下要点：[列出要点]。看起来如何？可以进入设计阶段吗？"
+   - Request approval: "Requirements include the following points: [list points]. How does it look? Can we proceed to design phase?"
 
 ## Tool Coordination
 - **Read**: Check `.specs/project-info.md`

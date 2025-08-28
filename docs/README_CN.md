@@ -30,10 +30,12 @@ ClaudeCode-Kiro-Workflow 是专为 Claude Code 设计的 AI 驱动开发工作�
 | `/kiro-start [功能名]` | 启动新的 SPECS 工作流（自动引导各阶段） | `/kiro-start 用户登录` |
 | `/kiro-next` | 执行下一个未完成任务 | `/kiro-next` |
 | `/kiro-info [信息]` | 保存项目上下文到 `.specs/project-info.md` | `/kiro-info "MySQL数据库，React 18前端"` |
+| `/kiro-status` | 查看当前项目状态和进度 | `/kiro-status` |
+| `/kiro-think [v1/v2/v3]` | 深度思考和讨论模式 | `/kiro-think v2 架构设计` |
 | `/kiro-save` | 保存进度并生成会话文件 | `/kiro-save` |
+| `/kiro-load` | 自动加载保存的会话状态 | `/kiro-load` |
 | `/kiro-end` | 完成功能（更新文档、生成总结、合并分支） | `/kiro-end` |
 | `/kiro-git` | 立即提交当前更改 | `/kiro-git` |
-| `/kiro-change` | 返回规划工作流处理需求变更 | `/kiro-change` |
 
 ## 工作流阶段
 
@@ -66,7 +68,19 @@ ClaudeCode-Kiro-Workflow 是专为 Claude Code 设计的 AI 驱动开发工作�
 - 执行前必须读取所有SPECS文档
 - 实时更新 tasks.md 中的进度
 - 自动任务状态同步
+- **增强规则**：
+  - 始终使用 bash/shell 脚本，禁止 bat/ps1/PowerShell
+  - 端口冲突时询问用户是否杀死进程，而非更改端口
+  - 优先使用服务管理脚本（npm run, make）而非直接命令
 - **关键约束**：与规划阶段明确分离，一次只执行一个任务，完成后等待用户指令
+
+### 阶段 5：功能完成
+**目标**：智能归档的清洁项目收尾
+- 标记会话为已完成并加上时间戳
+- 归档散落的测试/调试/临时文件到 `.specs/{feature}/`
+- 移动 session.md 到功能目录以保存历史
+- 生成综合总结文档
+- **关键约束**：永不删除会话数据，文件归档需要确认，保护系统文件
 
 ## 使用示例
 
@@ -201,9 +215,15 @@ AI: 正在更新文档...
 │   ├── requirements.md     # 需求规格文档
 │   ├── design.md          # 技术设计方案
 │   ├── tasks.md           # 实施任务列表及进度跟踪
-│   ├── session_*.md       # 会话恢复文件（如 session_2.1.md）
-│   └── summary.md         # 完成时生成的总结
+│   ├── session-{日期}.md  # 归档的会话文件（/kiro-end 时保存）
+│   ├── summary.md         # 完成时生成的总结
+│   ├── tests/            # 从项目根目录归档的测试文件
+│   ├── scripts/          # 归档的调试/工具脚本
+│   ├── temp/             # 归档的临时文件
+│   ├── analysis/         # 归档的分析文档
+│   └── docs/             # 额外的文档
 ├── project-info.md        # 基本项目信息
+├── session.md            # 当前活动会话（/kiro-end 时移动）
 └── backups/db/           # 数据库备份
     └── {功能名}_backup_{时间戳}.sql
 ```
@@ -244,10 +264,20 @@ AI: 正在更新文档...
 
 ## 命令特性
 
-- **`/kiro-save`**：保存进度并生成会话恢复文件，解决 AI 会话上下文限制问题
-- **`/kiro-end`**：完成功能开发，生成总结文档并合并到主分支
+### 核心工作流命令
+- **`/kiro-start [功能名]`**：启动新功能开发，自动创建分支和SPECS结构
+- **`/kiro-next`**：执行下一个任务，自动保存进度
+- **`/kiro-end`**：增强的功能完成，包含会话归档、文件整理和智能清理
+
+### 会话管理命令 (v1.0.3 新增)
+- **`/kiro-save`**：保存进度并持久化到 .specs/session.md
+- **`/kiro-load`**：自动加载会话状态，恢复上下文
+- **`/kiro-status`**：查看项目状态（简洁文字输出）
+
+### 辅助开发命令
+- **`/kiro-info [信息]`**：设置项目基础信息，自动配置 .gitignore
 - **`/kiro-git`**：快速提交代码更改，不更新进度文档
-- **`/kiro-change`**：智能处理需求变更，自动更新相关文档并保留已完成状态
+- **`/kiro-think [v1/v2/v3]`**：深度思考模式，替代了 /kiro-change
 
 ## 最佳实践
 

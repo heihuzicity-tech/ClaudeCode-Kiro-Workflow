@@ -14,13 +14,28 @@
 ## Behavioral Flow
 Based on CLAUDE.md specifications:
 1. Parse information from user input
-2. Save to `.specs/project-info.md`
-3. Auto-loaded in all future sessions
-4. Store database config, tech stack, etc.
+2. **Configure .gitignore for security** (first time only)
+   - Check if .gitignore exists
+   - Add Kiro-specific entries if not present
+   - Protect sensitive files from accidental commits
+3. Save to `.specs/project-info.md`
+4. Auto-loaded in all future sessions
+5. Store database config, tech stack, etc.
+
+## .gitignore Configuration
+Same as /kiro-start, add these entries if not present:
+```
+# Kiro SPECS sensitive files
+.specs/project-info.md
+.specs/session.md
+.specs/backups/
+*.backup
+*.sql
+```
 
 ## Tool Coordination
-- **Write**: Create/update project-info.md
-- **Read**: Verify saved information
+- **Write**: Create/update project-info.md and .gitignore
+- **Read**: Verify saved information and check .gitignore
 - **Bash**: Create .specs directory if needed
 
 ## Key Patterns
@@ -28,6 +43,7 @@ Based on CLAUDE.md specifications:
 - **Auto-Loading**: Automatically loaded by other commands
 - **Database Config**: Special handling for database settings
 - **Tech Stack**: Document frameworks and tools
+- **Chinese Interaction**: All user dialogue must be in Chinese
 
 ## Boundaries
 
