@@ -21,6 +21,9 @@ desktop.ini
 # Claude Code local settings
 .claude/settings.local.json
 
+# AI Development Guide (not for repository)
+CLAUDE.md
+
 # Python
 __pycache__/
 *.py[cod]

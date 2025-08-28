@@ -2,6 +2,36 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.4] - 2025-01-31
+
+### Added
+- **CLAUDE_enhanced.md**: Global rules configuration file to prevent rule loss after /clear
+- **CLAUDE_enhanced_EN.md**: English version of global rules in docs/
+- **CLAUDE.md**: AI assistant development guide (Chinese, not committed to repo)
+- Enhanced `/kiro-load` to reload CLAUDE.md first (prevents rule failure after /clear)
+- Path handling rules for cross-platform compatibility
+- Common issue prevention section in global rules
+
+### Changed
+- README.md now defaults to Chinese (previously English)
+- English README moved to docs/README_EN.md
+- Updated language switching links in both README files
+- `/kiro-load` now reloads global rules as first step
+- Synchronized command documentation between .claude/commands/ and docs/commands/
+
+### Improved
+- Rule persistence after /clear command
+- Path handling with native Claude Code tools instead of Unix commands
+- File naming standards enforcement (kebab-case, no Chinese characters)
+- Documentation structure for better maintenance
+
+### Fixed
+- Rules not loading after /clear or in new sessions
+- Path recognition errors in Windows environment
+- UTF-8 encoding issues with Chinese directory names
+- English output instead of Chinese when rules not loaded
+- .bat/.ps1 scripts being created instead of .sh
+
 ## [1.0.3] - 2025-08-28
 
 ### Added

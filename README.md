@@ -2,407 +2,367 @@
 
 <div align="center">
 
-![Version](https://img.shields.io/badge/version-1.0.1-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.4-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-Compatible-purple.svg)
 
-**A Specification-Driven Development workflow system optimized for Claude Code**
+**专为 Claude Code 优化的规范驱动开发工作流系统**
 
-[English](./README.md) | [简体中文](./docs/README_CN.md)
+[简体中文](./README.md) | [English](./docs/README_EN.md)
 
 </div>
 
-## 🚀 Overview
+## 🚀 概述
 
-ClaudeCode-Kiro-Workflow is a powerful AI-driven development workflow system designed specifically for Claude Code. Inspired by the SPECS (Specification-Driven Development) workflow from Kiro IDE, it brings structured, safe, and efficient development practices to Claude Code. The system guides developers through a proven process from requirements to implementation, featuring automatic database backups, Git branch isolation, and seamless session recovery.
+ClaudeCode-Kiro-Workflow 是专为 Claude Code 设计的 AI 驱动开发工作流系统。灵感来源于 Kiro IDE 的 SPECS（规范驱动开发）工作流，将这一成熟的开发方法论引入到 Claude Code 中。系统引导开发者完成从需求到实现的结构化流程，具备自动数据库备份、Git 分支隔离、会话无缝恢复等安全特性，确保开发过程高效且安全。
 
-This system uses Claude Code's `.claude/commands` mechanism, providing a simplified command system and native Chinese interaction support.
+本系统使用 Claude Code 的 `.claude/commands` 机制，提供简化的命令系统和原生中文交互支持。
 
-## 📚 References
+## 参考来源
 
-- **Core Inspiration**: SPECS workflow system from Kiro IDE
-- **Methodology**: Specification-Driven Development (SPECS)
-- **Runtime**: Optimized for Claude Code (Anthropic's official CLI)
-- **Command System**: Implemented using `.claude/commands` mechanism
+- **核心灵感**：Kiro IDE 的 SPECS 工作流系统
+- **方法论**：规范驱动开发（Specification-Driven Development）
+- **运行环境**：针对 Claude Code（Anthropic 官方 CLI）优化
+- **命令系统**：使用 `.claude/commands` 机制实现
 
-## ✨ Key Features
+## 核心特性
 
-1. **AI-Guided Workflow** - Automatic progression through Requirements → Design → Tasks → Execution → Completion
-2. **Comprehensive Command System** - 9 powerful commands covering full development lifecycle
-3. **Native Chinese Support** - Natural and fluent Chinese interaction with AI
-4. **Automatic Database Backup** - Intelligent detection and proactive database backup before development
-5. **Git Branch Isolation** - Automatic feature branch creation, protecting main branch
-6. **Enhanced Session Management** - Persistent session saving to .specs/session.md with auto-recovery
-7. **Real-time Progress Tracking** - Task status updates with automatic persistence
-8. **Intelligent File Archiving** - Auto-organization of test/debug/temp files on project completion
-9. **Deep Thinking Mode** - Three-level analysis system for complex problems (v1/v2/v3)
-10. **Smart Confirmation System** - Commands execute directly, discussions require confirmation
+1. **AI 引导工作流**：自动推进 需求 → 设计 → 任务 → 执行 各阶段
+2. **极简命令系统**：仅需记住 7 个核心命令
+3. **中文原生交互**：与 AI 进行自然流畅的中文对话
+4. **数据库自动备份**：开发前智能检测并主动备份数据库，防止数据丢失
+5. **Git 分支隔离**：自动创建功能分支，保护主分支不受影响
+6. **会话连续性**：跨会话无缝保持项目上下文，支持断点恢复
+7. **进度实时跟踪**：任务状态实时更新，自动持久化保存
 
-## 📋 Commands
+## 命令参考
 
-| Command | Description | Example |
-|---------|-------------|---------|
-| `/kiro-start [feature]` | Start new SPECS workflow (auto-guides through phases) | `/kiro-start user-login` |
-| `/kiro-next` | Execute next uncompleted task | `/kiro-next` |
-| `/kiro-info [info]` | Save project context to `.specs/project-info.md` | `/kiro-info "MySQL DB, React 18"` |
-| `/kiro-status` | View current project status and progress | `/kiro-status` |
-| `/kiro-think [v1/v2/v3]` | Deep thinking and discussion mode | `/kiro-think v2 architecture` |
-| `/kiro-save` | Save progress and generate session file | `/kiro-save` |
-| `/kiro-load` | Auto-load saved session state | `/kiro-load` |
-| `/kiro-end` | Complete feature (update docs, generate summary, merge) | `/kiro-end` |
-| `/kiro-git` | Immediately commit current changes | `/kiro-git` |
+| 命令 | 描述 | 使用示例 |
+|------|------|----------|
+| `/kiro-start [功能名]` | 启动新的 SPECS 工作流（自动引导各阶段） | `/kiro-start 用户登录` |
+| `/kiro-next` | 执行下一个未完成任务 | `/kiro-next` |
+| `/kiro-info [信息]` | 保存项目上下文到 `.specs/project-info.md` | `/kiro-info "MySQL数据库，React 18前端"` |
+| `/kiro-status` | 查看当前项目状态和进度 | `/kiro-status` |
+| `/kiro-think [v1/v2/v3]` | 深度思考和讨论模式 | `/kiro-think v2 架构设计` |
+| `/kiro-save` | 保存进度并生成会话文件 | `/kiro-save` |
+| `/kiro-load` | 自动加载保存的会话状态 | `/kiro-load` |
+| `/kiro-end` | 完成功能（更新文档、生成总结、合并分支） | `/kiro-end` |
+| `/kiro-git` | 立即提交当前更改 | `/kiro-git` |
 
-## 🔄 Workflow Phases
+## 工作流阶段
 
-### Phase 1: Requirements Clarification
-**Goal**: Transform vague ideas into structured requirement documents
-- User story format: "As a [role], I want [feature], so that [benefit]"
-- EARS (Easy Approach to Requirements Syntax) acceptance criteria
-- Hybrid approach: Quick initial draft + targeted clarification of key issues
-- **Key Constraints**: Limit initial questions to critical information (max 2-3), must obtain user approval after creating requirements.md
+### 阶段 1：需求澄清
+**目标**：将模糊想法转化为结构化需求文档
+- 用户故事格式："作为[角色]，我想要[功能]，以便[好处]"
+- EARS（易用需求语法）格式的验收标准
+- 混合方式：快速生成初稿 + 针对性澄清关键问题
+- **关键约束**：限制初始问题到关键信息（最多2-3个），创建requirements.md后必须获得用户批准
 
-### Phase 2: Design & Research
-**Goal**: Develop comprehensive design solution based on requirements
-- Analyze existing codebase patterns and architecture
-- Create technical design with decision rationale
-- Research integration points and dependencies
-- Support Mermaid diagrams in design documents
-- **Key Constraints**: Include sections for overview, architecture, component interfaces, data models, error handling, testing strategy
+### 阶段 2：设计与研究
+**目标**：基于需求开发综合设计方案
+- 分析现有代码库模式和架构
+- 创建包含决策理由的技术设计方案
+- 研究集成点和依赖关系
+- 支持 Mermaid 图表的设计文档
+- **关键约束**：包含总览、架构、组件接口、数据模型、错误处理、测试策略等章节
 
-### Phase 3: Task Planning
-**Goal**: Create executable implementation plan based on requirements and design
-- Break down into independently executable coding tasks
-- Test-Driven Development (TDD) approach
-- Use decimal notation (1.1, 1.2, 2.1) for task hierarchy
-- Each task includes implementation details as sub-items
-- **Key Constraints**: Focus only on tasks that involve writing, modifying, or testing code; avoid non-coding tasks
+### 阶段 3：任务规划
+**目标**：基于需求和设计创建可执行的实施计划
+- 分解为可独立执行的编码任务
+- 测试驱动开发（TDD）方法
+- 使用小数点标记法（1.1、1.2、2.1）表示任务层次
+- 每个任务包含实施细节的子项目
+- **关键约束**：只关注编写、修改或测试代码的任务，避免非编码任务
 
-### Phase 4: Task Execution
-**Goal**: Execute implementation tasks according to SPECS documents
-- Strict single-task execution principle
-- Must read all SPECS documents before execution
-- Real-time progress updates in tasks.md
-- Automatic task status synchronization
-- **Enhanced Rules**: 
-  - Always use bash/shell scripts, never bat/ps1/PowerShell
-  - Ask user to kill conflicting processes instead of changing ports
-  - Use service management scripts (npm run, make) over direct commands
-- **Key Constraints**: Clear separation from planning phase, execute only one task at a time, wait for user instruction after completion
+### 阶段 4：任务执行
+**目标**：按照SPECS文档执行实施任务
+- 严格的单任务执行原则
+- 执行前必须读取所有SPECS文档
+- 实时更新 tasks.md 中的进度
+- 自动任务状态同步
+- **增强规则**：
+  - 始终使用 bash/shell 脚本，禁止 bat/ps1/PowerShell
+  - 端口冲突时询问用户是否杀死进程，而非更改端口
+  - 优先使用服务管理脚本（npm run, make）而非直接命令
+- **关键约束**：与规划阶段明确分离，一次只执行一个任务，完成后等待用户指令
 
-### Phase 5: Feature Completion
-**Goal**: Clean project closure with intelligent archiving
-- Mark session as completed with timestamp
-- Archive scattered test/debug/temp files to `.specs/{feature}/`
-- Move session.md to feature directory for history preservation
-- Generate comprehensive summary document
-- **Key Constraints**: Never delete session data, require confirmation for file archiving, protect system files
+### 阶段 5：功能完成
+**目标**：智能归档的清洁项目收尾
+- 标记会话为已完成并加上时间戳
+- 归档散落的测试/调试/临时文件到 `.specs/{feature}/`
+- 移动 session.md 到功能目录以保存历史
+- 生成综合总结文档
+- **关键约束**：永不删除会话数据，文件归档需要确认，保护系统文件
 
-## 💡 Usage Examples
+## 使用示例
 
-### Security Features Demo
+### 安全功能演示
 ```
-User: /kiro-info "mysql -uroot -ppass123 -hlocalhost dbname=shop"
+用户: /kiro-info "mysql -uroot -ppass123 -hlocalhost dbname=shop"
 
-AI: Project information saved to .specs/project-info.md
+AI: 项目信息已保存到 .specs/project-info.md
 
-User: /kiro-start payment-feature
+用户: /kiro-start 支付功能
 
-AI: Starting payment feature development...
+AI: 正在启动支付功能开发...
 
-    Database configuration detected: mysql dbname=shop
-    Do you want to backup the database? This will ensure your data safety (recommended: yes)
+    检测到数据库配置：mysql dbname=shop
+    是否需要备份数据库？这将确保您的数据安全 (建议：是)
 
-User: yes
+用户: 是
 
-AI: Executing database backup...
-    Backup successful: .specs/backups/db/payment-feature_backup_20250126_143022.sql
+AI: 正在执行数据库备份...
+    备份成功：.specs/backups/db/支付功能_backup_20250126_143022.sql
     
-    Checking Git status...
-    Working directory clean, creating feature branch...
-    Created and switched to branch: feature/payment-feature
+    检查 Git 状态...
+    工作区干净，正在创建功能分支...
+    已创建并切换到分支：feature/支付功能
     
-    Current branch: feature/payment-feature
-    Main branch is protected, all development will proceed in feature branch
+    当前分支：feature/支付功能
+    主分支已受保护，所有开发将在功能分支进行
     
-    Starting requirements gathering phase...
+    现在开始需求收集阶段...
 ```
 
-### Starting New Feature
+### 开始新功能开发
 ```
-User: /kiro-info "MySQL database, React frontend, Node.js backend with JWT auth"
+用户: /kiro-info "MySQL数据库，React前端，Node.js后端，使用JWT认证"
 
-AI: Project information saved to .specs/project-info.md
+AI: 项目信息已保存到 .specs/project-info.md
 
-User: /kiro-start user-authentication
+用户: /kiro-start 用户认证系统
 
-AI: Starting user authentication development...
+AI: 正在启动用户认证系统开发...
     
-    Database configuration detected
-    Do you want to backup the database? (recommended: yes)
+    检测到数据库配置
+    是否需要备份数据库？(建议：是)
 
-User: yes
+用户: 是
 
-AI: Executing database backup...
-    Created feature branch: feature/user-authentication
+AI: 执行数据库备份...
+    已创建功能分支：feature/用户认证系统
     
-    Starting requirements gathering, please answer:
-    1. Which login methods do you need?
-    2. Do you need persistent login sessions?
-```
-
-### Executing Development Tasks
-```
-User: /kiro-next
-
-AI: Reading SPECS documents...
-    Current task: 1.1 Create user model
-    
-    Starting task execution...
-    - Creating src/models/User.js
-    - Adding field validation
-    - Creating unit tests
-    
-    Task 1.1 completed! Continue with next task?
-
-User: yes
-
-AI: Executing task 1.2: Implement login endpoint...
+    开始需求收集，请回答以下问题：
+    1. 需要支持哪些登录方式？
+    2. 是否需要记住登录状态？
 ```
 
-### Session Recovery
+### 执行开发任务
 ```
-User: /kiro-save
+用户: /kiro-next
 
-AI: Saving progress...
-    Session state saved to: .specs/session.md
-    Progress committed to git
+AI: 读取 SPECS 文档...
+    当前任务：1.1 创建用户模型
     
-    === Next Session Prompt ===
-    I am developing user-login using Kiro SPECS
-    Session state saved to: .specs/session.md
+    开始执行任务...
+    - 创建 src/models/User.js
+    - 添加字段验证
+    - 创建单元测试
     
-    Please load session with: /kiro-load
-    Or manually continue with: /kiro-next
+    任务 1.1 已完成！是否继续下一个任务？
+
+用户: 是
+
+AI: 执行任务 1.2：实现登录接口...
+```
+
+### 会话恢复机制
+```
+用户: /kiro-save
+
+AI: 正在保存进度...
+    会话文件已生成：.specs/用户登录/session_2.1.md
+    进度已提交到 git
+    
+    === 下次会话提示 ===
+    我正在使用 Kiro SPECS 开发用户登录功能
+    请读取 .specs/用户登录/session_2.1.md 继续开发
+    
+    请继续：/kiro-next
     =====================
 
---- New Session ---
+--- 新会话 ---
 
-User: /kiro-load
+用户: 我正在使用 Kiro SPECS 开发用户登录功能
+      请读取 .specs/用户登录/session_2.1.md 继续开发
 
-AI: Loading saved session...
-    Feature: user-login
-    Branch: feature/user-login
-    Progress: Completed task 2.1, next is 2.2
-    
-    Ready to continue with: /kiro-next
+AI: 已加载项目进度。您正在开发用户登录功能，
+    已完成任务 2.1，下一个任务是 2.2。
 
-User: /kiro-next
+用户: /kiro-next
 
-AI: Continuing task 2.2: Implement password validation...
+AI: 继续执行任务 2.2：实现密码验证...
 ```
 
-### Check Project Status
+### 处理需求变更
 ```
-User: /kiro-status
+用户: /kiro-change
 
-AI: ╔════════════════════════════════════════╗
-    ║          KIRO Project Status           ║
-    ╚════════════════════════════════════════╝
-    
-    📁 Project: /workspace/myproject
-    🎯 Feature: user-authentication
-    🌿 Branch: feature/user-authentication
-    📊 Phase: Execution
-    
-    📝 Progress: ████████░░░░  5/10 (50%)
-    
-    ✅ Completed: 5 tasks
-    🔄 Current: Task 2.3 - Create login endpoint
-    ⏳ Remaining: 4 tasks
-    
-    💾 Session: ✅ Up to date
-    📅 Last update: 2025-01-31 15:30
-    
-    Next: /kiro-next to continue
-```
+AI: 请描述需要变更的内容：
 
-### Deep Thinking and Discussion
-```
-User: /kiro-think v2 how to optimize database performance
+用户: 客户要求增加手机号登录方式
 
-AI: 🤔 Deep Thinking: Database Performance Optimization
-    Thinking Level: v2
+AI: 了解了，需要增加手机号登录。分析影响：
+    - 需求文档：添加手机号登录需求
+    - 设计文档：更新登录接口设计
+    - 任务列表：新增3个相关任务
     
-    📊 Problem Analysis:
-    - Current bottleneck: Slow query response times
-    - Database size: 50GB with 10M records
-    - Peak load: 1000 queries/second
-    
-    💡 Solutions:
-    
-    Solution A: Index Optimization
-    ✅ Pros: Quick implementation, low risk
-    ❌ Cons: Limited improvement for complex queries
-    
-    Solution B: Read Replicas + Caching
-    ✅ Pros: Significant performance boost
-    ❌ Cons: Higher complexity and cost
-    
-    🎯 Recommendation:
-    Based on analysis, I recommend Solution B for long-term scalability.
-    
-    Shall I proceed with implementing Solution B? Need help with implementation?
+    是否按此方案更新？
 
-User: Yes, proceed with Solution B
+用户: 是
 
-AI: Starting implementation...
-    [Begins implementing the agreed solution]
+AI: 正在更新文档...
+    已更新 requirements.md
+    已更新 design.md
+    已更新 tasks.md（保留已完成任务状态）
+    
+    请使用 /kiro-next 继续开发
 ```
 
-## 📁 File Structure
+## 文件结构
 
 ```
 .specs/
-├── {feature_name}/
-│   ├── requirements.md     # Requirements documentation
-│   ├── design.md          # Technical design
-│   ├── tasks.md           # Implementation tasks and progress tracking
-│   ├── session-{date}.md  # Archived session files (preserved on /kiro-end)
-│   ├── summary.md         # Generated on completion
-│   ├── tests/            # Archived test files from project root
-│   ├── scripts/          # Archived debug/utility scripts
-│   ├── temp/             # Archived temporary files
-│   ├── analysis/         # Archived analysis documents
-│   └── docs/             # Additional documentation
-├── project-info.md        # Basic project information
-├── session.md            # Current active session (moved on /kiro-end)
-└── backups/db/           # Database backups
-    └── {feature}_backup_{timestamp}.sql
+├── {功能名称}/
+│   ├── requirements.md     # 需求规格文档
+│   ├── design.md          # 技术设计方案
+│   ├── tasks.md           # 实施任务列表及进度跟踪
+│   ├── session-{日期}.md  # 归档的会话文件（/kiro-end 时保存）
+│   ├── summary.md         # 完成时生成的总结
+│   ├── tests/            # 从项目根目录归档的测试文件
+│   ├── scripts/          # 归档的调试/工具脚本
+│   ├── temp/             # 归档的临时文件
+│   ├── analysis/         # 归档的分析文档
+│   └── docs/             # 额外的文档
+├── project-info.md        # 基本项目信息
+├── session.md            # 当前活动会话（/kiro-end 时移动）
+└── backups/db/           # 数据库备份
+    └── {功能名}_backup_{时间戳}.sql
 ```
 
-## 🔒 Security Mechanisms
+## 安全保障机制
 
-### Automatic Database Backup
-- **Smart Detection**: Automatically detects database configuration at startup
-- **Proactive Reminder**: Prompts for backup when database config is found
-- **Auto Execution**: Performs complete database backup upon confirmation
-- **Backup Path**: `.specs/backups/db/{feature}_backup_{timestamp}.sql`
-- **Zero Data Loss**: Ensures data safety during development
+### 数据库自动备份
+- **智能检测**：启动开发时自动检测数据库配置
+- **主动提醒**：发现数据库配置后主动询问是否备份
+- **自动执行**：确认后自动执行完整数据库备份
+- **备份路径**：`.specs/backups/db/{feature}_backup_{timestamp}.sql`
+- **零数据丢失**：确保开发过程中的数据安全
 
-### Git Branch Isolation
-- **Auto Feature Branch**: Each feature gets isolated branch `feature/[name]`
-- **Main Branch Protection**: No direct operations on main branch during development
-- **Status Check**: Ensures clean Git workspace before creating branch
-- **Smart Merge**: Merges to main only after feature completion
-- **Conflict Prevention**: Isolated development prevents code conflicts
+### Git 分支隔离保护
+- **自动创建功能分支**：每个功能独立分支 `feature/[name]`
+- **主分支保护**：开发过程中不直接操作主分支
+- **状态检查**：确保 Git 工作区干净后才创建分支
+- **智能合并**：功能完成后才合并到主分支
+- **冲突预防**：隔离开发避免代码冲突
 
-### Document Integrity Protection
-- **Atomic Operations**: Document updates either all succeed or all rollback
-- **State Consistency**: Ensures requirements, design, tasks documents stay in sync
-- **Progress Persistence**: Automatically saves task progress to prevent loss
-- **Version Tracking**: All document changes automatically tracked in Git
+### 文档完整性保护
+- **原子操作**：文档更新要么全部成功，要么全部回滚
+- **状态一致性**：确保 requirements、design、tasks 文档同步
+- **进度持久化**：自动保存任务进度，防止丢失
+- **版本追踪**：所有文档变更自动纳入 Git 管理
 
-### Error Recovery
-- **Graceful Degradation**: Single operation failure doesn't affect overall flow
-- **Smart Retry**: Automatic retry for network or temporary errors
-- **State Recovery**: Resume from breakpoint after abnormal interruption
-- **Detailed Logs**: Complete error information for troubleshooting
+### 错误恢复机制
+- **优雅降级**：单个操作失败不影响整体流程
+- **智能重试**：网络或临时错误自动重试
+- **状态恢复**：异常中断后可从断点继续
+- **详细日志**：保留完整错误信息便于排查
 
-### Session Continuity Protection
-- **Auto Progress Save**: `/kiro-save` generates complete session recovery file
-- **Context Preservation**: New sessions can seamlessly continue previous work
-- **Task State Persistence**: Completed tasks never lost
-- **Cross-session Collaboration**: Supports team member handover
+### 会话连续性保护
+- **自动保存进度**：`/kiro-save` 生成完整会话恢复文件
+- **上下文保持**：新会话可无缝继续之前的工作
+- **任务状态持久化**：已完成任务永不丢失
+- **跨会话协作**：支持团队成员接续开发
 
-## 🎯 Command Features
+## 命令特性
 
-### Core Workflow Commands
-- **`/kiro-start [feature]`**: Start new feature development, auto-create branch and SPECS structure
-- **`/kiro-next`**: Execute next task with automatic progress saving
-- **`/kiro-end`**: Enhanced feature completion with session archiving, file organization, and intelligent cleanup
+### 核心工作流命令
+- **`/kiro-start [功能名]`**：启动新功能开发，自动创建分支和SPECS结构
+- **`/kiro-next`**：执行下一个任务，自动保存进度
+- **`/kiro-end`**：增强的功能完成，包含会话归档、文件整理和智能清理
 
-### Session Management (v1.0.3 Enhanced)
-- **`/kiro-save`**: Save progress and persist to .specs/session.md
-- **`/kiro-load`**: Auto-load session state, restore context
-- **`/kiro-status`**: View project status with clean text output
+### 会话管理命令 (v1.0.3 新增)
+- **`/kiro-save`**：保存进度并持久化到 .specs/session.md
+- **`/kiro-load`**：自动加载会话状态，恢复上下文
+- **`/kiro-status`**：查看项目状态（简洁文字输出）
 
-### Development Support
-- **`/kiro-info [info]`**: Set project information, auto-configure .gitignore
-- **`/kiro-git`**: Quick code commit without updating progress documents
-- **`/kiro-think [v1/v2/v3]`**: Deep thinking mode, replaced /kiro-change
+### 辅助开发命令
+- **`/kiro-info [信息]`**：设置项目基础信息，自动配置 .gitignore
+- **`/kiro-git`**：快速提交代码更改，不更新进度文档
+- **`/kiro-think [v1/v2/v3]`**：深度思考模式，替代了 /kiro-change
 
-## 🎨 Best Practices
+## 最佳实践
 
-### Workflow Adherence
-1. **Trust AI Workflow**: Let AI guide you through optimal development process
-2. **Provide Clear Requirements**: Clearer input leads to more accurate AI-generated documents
-3. **Follow Approval Gates**: Each phase requires explicit approval before continuing
-4. **Focus on Single Task**: Execute one task at a time, wait for confirmation
+### 工作流遵循
+1. **相信 AI 工作流**：让 AI 引导您完成最优开发流程
+2. **提供清晰需求**：输入越清晰，AI 生成的文档越准确
+3. **遵循审批关卡**：每个阶段完成后需明确批准才能继续
+4. **专注单一任务**：一次只执行一个任务，完成后等待确认
 
-### Session Management
-5. **Regular Progress Saves**: Use `/kiro-save` before ending sessions
-6. **Use Session Prompts**: Start new sessions with generated prompts
-7. **Configure Project Info**: Setup `/kiro-info` project information before first use
+### 会话管理
+5. **定期保存进度**：会话结束前使用 `/kiro-save` 保存
+6. **使用会话提示**：新会话开始时使用生成的提示词
+7. **项目信息配置**：首次使用前配置 `/kiro-info` 项目信息
 
-### Error Handling
-8. **Understand Failures**: Check specific error messages when encountering issues
-9. **Use Recovery Suggestions**: Follow AI-provided recovery recommendations
-10. **Manage Requirement Changes**: Use `/kiro-change` for changes instead of direct modification
+### 错误处理
+8. **理解失败原因**：遇到错误时查看具体错误信息
+9. **使用恢复建议**：按照AI提供的恢复建议处理问题
+10. **需求变更管理**：需求变化时使用 `/kiro-change` 而非直接修改
 
-### Security Practices
-11. **Database Backups**: Ensure database is backed up before development
-12. **Branch Isolation**: Ensure working on correct feature branch
-13. **Progressive Commits**: Use `/kiro-git` for regular code commits
+### 安全实践
+11. **数据库备份**：开发前确保数据库已备份
+12. **分支隔离**：确保在正确的功能分支上工作
+13. **渐进提交**：使用 `/kiro-git` 定期提交代码更改
 
-## 🛠️ Installation
+## 安装配置
 
-### Option A: Quick Installation (Recommended)
+### 方式一：快速安装（推荐）
 ```bash
-# Copy entire .claude folder to your project
+# 将整个 .claude 文件夹复制到您的项目
 cp -r .claude your-project/
 ```
 
-### Option B: Custom Installation
-If you already have `.claude` configurations:
-1. Copy command files from `docs/commands/*.md`
-2. Place them in your `.claude/commands/` directory
-3. Ensure filenames match: `kiro-start.md`, `kiro-save.md`, etc.
+### 方式二：自定义安装
+如果您已有 `.claude` 配置：
+1. 从 `docs/commands/*.md` 复制命令文件
+2. 放入您的 `.claude/commands/` 目录
+3. 确保文件名匹配：`kiro-start.md`、`kiro-save.md` 等
 
-### Start Using
+### 开始使用
 ```
-/kiro-start [feature_name]
+/kiro-start [功能名]
 ```
 
-## 🤝 Contributing
+## 参与贡献
 
-We welcome contributions! Please submit Issues and Pull Requests:
+欢迎提交 Issue 和 Pull Request！我们期待您的贡献：
 
-- Report bugs or suggestions
-- Improve documentation
-- Share usage experiences
-- Contribute code optimizations
+- 报告问题或建议
+- 改进文档
+- 分享使用经验
+- 贡献代码优化
 
-## 📄 License
+## 开源协议
 
 MIT License
 
-## 🙏 Acknowledgments
+## 致谢
 
-- Thanks to Kiro IDE team for the SPECS workflow inspiration
-- Thanks to Anthropic team for developing Claude Code platform
-- Thanks to all users and contributors to this workflow system
+- 感谢 Kiro IDE 团队提供的 SPECS 工作流灵感
+- 感谢 Anthropic 团队开发的 Claude Code 平台
+- 感谢所有使用和贡献此工作流系统的开发者
 
-## 🔗 Links
+## 相关链接
 
-- [GitHub Project](https://github.com/heihuzicity-tech/ClaudeCode-Kiro-Workflow)
-- [Project Website](https://www.heihuzicity.com)
-- [Claude Code Documentation](https://docs.anthropic.com/en/docs/claude-code)
-- [Report Issues](https://github.com/heihuzicity-tech/ClaudeCode-Kiro-Workflow/issues)
+- [GitHub 项目](https://github.com/heihuzicity-tech/ClaudeCode-Kiro-Workflow)
+- [项目主页](https://www.heihuzicity.com)
+- [Claude Code 官方文档](https://docs.anthropic.com/en/docs/claude-code)
+- [问题反馈](https://github.com/heihuzicity-tech/ClaudeCode-Kiro-Workflow/issues)
 
 ---
 
-**Maintainer**: heihuzicity-tech  
+**项目维护者**: heihuzicity-tech  
 **GitHub**: https://github.com/heihuzicity-tech/ClaudeCode-Kiro-Workflow  
-**Website**: https://www.heihuzicity.com  
-**Last Updated**: 2025-01-26  
-**Version**: 1.0.2
+**网站**: https://www.heihuzicity.com  
+**最后更新**: 2025-01-26  
+**版本号**: 1.0.2
