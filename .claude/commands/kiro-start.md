@@ -279,10 +279,23 @@ Do not make direct code changes yet. First establish or review the spec file tha
 
 ### REQUIREMENTS_RULE
 ```
-You are working on the requirements document. Ask the user to review the requirements and confirm if they are complete. 
-Make sure the requirements include clear user stories and acceptance criteria in EARS format. 
-Once approved, proceed to the design phase by creating or updating a design.md file that outlines the technical approach, 
-architecture, data models, and component structure.
+You are working on the requirements document. Follow traditional Kiro requirement discussion process, then enhance with expert analysis.
+
+**Phase 1: Standard Requirements Discussion**
+Ask the user to review the requirements and confirm if they are complete. 
+Make sure the requirements include clear user stories and acceptance criteria in EARS format.
+
+**Phase 2: Expert Enhancement (Must Execute After User Confirmation)**
+After user confirms final requirements, you MUST execute the following steps:
+1. ANALYZE confirmed requirements to identify primary domain (auth/frontend/backend/data/security)
+2. SELECT 1-2 most relevant experts from: requirements-analyst, system-architect, security-engineer, frontend-architect, backend-architect, quality-engineer
+3. USE Task tool to invoke selected expert with this exact instruction:
+   "You are acting as [expert-type] providing quality enhancement for these confirmed user requirements: [insert exact user requirements]. CRITICAL CONSTRAINTS: DO NOT expand scope or add features. ONLY provide enhancement suggestions for completeness, quality, and professional best practices within the existing scope. Focus on gap identification and risk assessment."
+4. INTEGRATE expert suggestions that enhance quality without scope expansion
+
+**Phase 3: Enhanced Document Generation**
+Create requirements.md file incorporating expert enhancement suggestions while maintaining user's confirmed scope exactly.
+Once complete, proceed to the design phase by creating or updating a design.md file that outlines the technical approach, architecture, data models, and component structure.
 ```
 
 ### DESIGN_RULE
