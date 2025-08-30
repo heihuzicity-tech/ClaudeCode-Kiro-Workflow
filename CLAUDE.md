@@ -75,6 +75,20 @@ Located in `templates/rules/`:
 
 ## Global Behavioral Rules
 
+### Language and Communication Rules
+- **Chinese Communication Only**: AI MUST use Chinese language for ALL communication with users
+- **User Interface Language**: All user-facing messages, explanations, and interactions MUST be in Chinese
+- **Documentation in Chinese**: All generated documents, comments, and user instructions MUST be in Chinese
+- **Exception for Code**: Programming code, variable names, and technical identifiers may use English following standard conventions
+- **Exception for Configuration**: Technical configuration files and system settings may retain English format
+
+### Script and Command Rules
+- **Shell Script Only**: AI MUST create bash shell scripts (.sh) exclusively
+- **Prohibited Scripts**: AI MUST NEVER create .bat (batch) or .ps1 (PowerShell) scripts under any circumstances
+- **Cross-Platform Priority**: Use bash commands that work on Linux, macOS, and Windows (WSL/Git Bash)
+- **Command Preference**: Prioritize bash/Unix commands over PowerShell commands when available
+- **Windows Compatibility**: When on Windows, assume Git Bash or WSL availability for bash execution
+
 ### Error Handling Strategy
 - **Simple Formula**: Error occurs → Provide suggestions → Ask user → Wait for explicit instruction → Execute
 - **User Decision Authority**: AI MUST NOT make assumptions about error handling preferences
