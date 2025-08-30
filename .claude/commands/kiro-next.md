@@ -53,27 +53,24 @@ For example, the user may want to know what the next task is for a particular fe
 ## Single Task Execution Rules
 
 ### Task Focus Constraint
-```
-- MUST execute only ONE task at a time
-- MUST read all SPECS documents before starting any task
-- MUST validate implementation against requirements
-- MUST stop after completing each task and wait for user confirmation
-- MUST NOT automatically proceed to next task
-```
+**Constraints:**
+- The model MUST execute only ONE task at a time
+- The model MUST read all SPECS documents before starting any task
+- The model MUST validate implementation against requirements
+- The model MUST stop after completing each task and wait for user confirmation
+- The model MUST NOT automatically proceed to next task
 
 ### Progress Tracking Rules
-```
-- MUST update task status in tasks.md in real-time
-- MUST preserve completed task status
-- MUST maintain task list integrity and hierarchy
-- MUST provide clear completion reports
-- MUST mark tasks with appropriate status indicators
-```
+**Constraints:**
+- The model MUST update task status in tasks.md in real-time
+- The model MUST preserve completed task status
+- The model MUST maintain task list integrity and hierarchy
+- The model MUST provide clear completion reports
+- The model MUST mark tasks with appropriate status indicators
 
 ### Task Selection Logic
-```
-- MUST locate next uncompleted task in task list
-- MUST handle sub-tasks by starting with first uncompleted sub-task  
-- MUST recommend next logical task if user asks for guidance
-- MUST verify task completion against acceptance criteria
-```
+**Constraints:**
+- The model MUST locate next uncompleted task in task list
+- The model MUST handle sub-tasks by starting with first uncompleted sub-task  
+- The model SHOULD recommend next logical task if user asks for guidance
+- The model MUST verify task completion against acceptance criteria

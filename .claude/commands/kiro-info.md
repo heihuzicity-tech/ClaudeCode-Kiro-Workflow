@@ -29,27 +29,24 @@ Configures project information and initializes Kiro workflow system with project
 ## Project Configuration Rules
 
 ### Project Information Structure
-```
-- Project name and description
-- Technology stack and frameworks
-- Key requirements and constraints  
-- Directory structure and organization
-- Development environment setup
-- Testing and deployment information
-```
+**Constraints:**
+- The model MUST include project name and description
+- The model MUST specify technology stack and frameworks
+- The model MUST document key requirements and constraints  
+- The model SHOULD include directory structure and organization
+- The model SHOULD document development environment setup
+- The model MAY include testing and deployment information
 
 ### .gitignore Configuration
-```
-- MUST add .specs/ directory patterns appropriately
-- MUST exclude session.md from version control
-- MUST exclude database backup files
-- MUST preserve existing .gitignore entries
-```
+**Constraints:**
+- The model MUST add .specs/ directory patterns appropriately
+- The model MUST exclude session.md from version control
+- The model MUST exclude database backup files
+- The model MUST preserve existing .gitignore entries
 
 ### Context Persistence
-```
-- MUST save project info to .specs/project-info.md
-- MUST ensure automatic loading in future sessions
-- MUST maintain project context across workflow operations
-- MUST validate information completeness
-```
+**Constraints:**
+- The model MUST save project info to .specs/project-info.md
+- The model MUST ensure automatic loading in future sessions
+- The model MUST maintain project context across workflow operations
+- The model MUST validate information completeness

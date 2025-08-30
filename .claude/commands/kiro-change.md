@@ -38,37 +38,33 @@ Synchronizes discussion outcomes from /kiro-think sessions into relevant SPECS d
 ## Document Synchronization Rules
 
 ### Context Analysis
-```
-- MUST extract change requirements from conversation context
-- MUST identify affected SPECS documents
-- MUST determine scope and impact of changes
-- MUST preserve discussion rationale and decisions
-```
+**Constraints:**
+- The model MUST extract change requirements from conversation context
+- The model MUST identify affected SPECS documents
+- The model MUST determine scope and impact of changes
+- The model MUST preserve discussion rationale and decisions
 
 ### Atomic Update Process
-```
-1. Read all existing SPECS documents
-2. Generate updated document versions
-3. Display before/after comparisons
-4. Request user approval
-5. Apply all changes atomically
-6. Validate consistency across documents
-7. Commit changes with descriptive message
-```
+**Constraints:**
+- The model MUST read all existing SPECS documents
+- The model MUST generate updated document versions
+- The model MUST display before/after comparisons
+- The model MUST request user approval
+- The model MUST apply all changes atomically
+- The model MUST validate consistency across documents
+- The model MUST commit changes with descriptive message
 
 ### Consistency Validation
-```
-- MUST ensure requirements ↔ design alignment
-- MUST ensure design ↔ tasks alignment  
-- MUST preserve requirement traceability
-- MUST maintain task hierarchy and numbering
-- MUST validate completed task status preservation
-```
+**Constraints:**
+- The model MUST ensure requirements ↔ design alignment
+- The model MUST ensure design ↔ tasks alignment  
+- The model MUST preserve requirement traceability
+- The model MUST maintain task hierarchy and numbering
+- The model MUST validate completed task status preservation
 
 ### Change Impact Assessment
-```
-- MUST highlight scope changes
-- MUST assess timeline impact
-- MUST identify affected completed tasks
-- MUST recommend additional updates if needed
-```
+**Constraints:**
+- The model MUST highlight scope changes
+- The model MUST assess timeline impact
+- The model MUST identify affected completed tasks
+- The model SHOULD recommend additional updates if needed

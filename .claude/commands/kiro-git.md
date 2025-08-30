@@ -29,26 +29,23 @@ Performs immediate Git commit of all current changes with descriptive commit mes
 ## Git Operation Rules
 
 ### Commit Process
-```
-- MUST stage all changes (git add .)
-- MUST generate descriptive commit message
-- MUST commit on current branch only
-- MUST display commit confirmation with hash
-- MUST NOT perform branch operations
-```
+**Constraints:**
+- The model MUST stage all changes (git add .)
+- The model MUST generate descriptive commit message
+- The model MUST commit on current branch only
+- The model MUST display commit confirmation with hash
+- The model MUST NOT perform branch operations
 
 ### Commit Message Generation
-```
-- MUST describe changes made
-- SHOULD include context about feature work
-- SHOULD be concise but descriptive
-- SHOULD follow conventional commit format when appropriate
-```
+**Constraints:**
+- The model MUST describe changes made
+- The model SHOULD include context about feature work
+- The model SHOULD be concise but descriptive
+- The model SHOULD follow conventional commit format when appropriate
 
 ### Safety Checks
-```
-- MUST validate Git repository exists
-- MUST confirm on feature branch (not main)
-- MUST handle merge conflicts gracefully
-- MUST report any Git errors clearly
-```
+**Constraints:**
+- The model MUST validate Git repository exists
+- The model SHOULD confirm on feature branch (not main)
+- The model MUST handle merge conflicts gracefully
+- The model MUST report any Git errors clearly

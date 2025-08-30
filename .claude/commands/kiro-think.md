@@ -33,35 +33,31 @@ Activates multi-level deep analysis mode for complex problem solving, requiremen
 ## Deep Analysis Framework
 
 ### Multi-Level Thinking
-```
-v1: Basic analysis - single perspective, straightforward solutions
-v2: Enhanced analysis - multiple perspectives, trade-off consideration
-v3: Comprehensive analysis - system-wide impacts, alternative scenarios
-```
+**Constraints:**
+- The model SHOULD use v1 for basic analysis with single perspective and straightforward solutions
+- The model SHOULD use v2 for enhanced analysis with multiple perspectives and trade-off consideration
+- The model SHOULD use v3 for comprehensive analysis with system-wide impacts and alternative scenarios
 
 ### Analysis Structure
-```
-1. Problem Definition and Context
-2. Current State Assessment 
-3. Impact Analysis on Existing SPECS
-4. Solution Alternatives and Trade-offs
-5. Recommended Approach with Rationale
-6. Implementation Impact Assessment
-```
+**Constraints:**
+- The model MUST include problem definition and context
+- The model MUST perform current state assessment
+- The model MUST analyze impact on existing SPECS
+- The model MUST evaluate solution alternatives and trade-offs
+- The model MUST provide recommended approach with rationale
+- The model MUST assess implementation impact
 
 ### Change Management Rules
-```
-- MUST preserve completed task progress
-- MUST maintain document consistency
-- MUST provide clear before/after comparisons
-- MUST support rollback to previous states
-- MUST validate changes against original requirements
-```
+**Constraints:**
+- The model MUST preserve completed task progress
+- The model MUST maintain document consistency
+- The model MUST provide clear before/after comparisons
+- The model MUST support rollback to previous states
+- The model MUST validate changes against original requirements
 
 ### Documentation Requirements
-```
-- MUST save analysis results with timestamps
-- MUST document decision rationale
-- MUST record alternative solutions considered
-- MUST include implementation impact assessment
-```
+**Constraints:**
+- The model MUST save analysis results with timestamps
+- The model MUST document decision rationale
+- The model MUST record alternative solutions considered
+- The model MUST include implementation impact assessment

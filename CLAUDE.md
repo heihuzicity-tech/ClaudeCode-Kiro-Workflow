@@ -76,42 +76,48 @@ Located in `templates/rules/`:
 ## Global Behavioral Rules
 
 ### Language and Communication Rules
-- **Chinese Communication Only**: AI MUST use Chinese language for ALL communication with users
-- **User Interface Language**: All user-facing messages, explanations, and interactions MUST be in Chinese
-- **Documentation in Chinese**: All generated documents, comments, and user instructions MUST be in Chinese
-- **Exception for Code**: Programming code, variable names, and technical identifiers may use English following standard conventions
-- **Exception for Configuration**: Technical configuration files and system settings may retain English format
+**Constraints:**
+- The model MUST use Chinese language for ALL communication with users
+- The model MUST provide user-facing messages, explanations, and interactions in Chinese
+- The model MUST generate documents, comments, and user instructions in Chinese
+- The model MAY use English for programming code, variable names, and technical identifiers following standard conventions
+- The model MAY retain English format for technical configuration files and system settings when required
 
 ### Script and Command Rules
-- **Shell Script Only**: AI MUST create bash shell scripts (.sh) exclusively
-- **Prohibited Scripts**: AI MUST NEVER create .bat (batch) or .ps1 (PowerShell) scripts under any circumstances
-- **Cross-Platform Priority**: Use bash commands that work on Linux, macOS, and Windows (WSL/Git Bash)
-- **Command Preference**: Prioritize bash/Unix commands over PowerShell commands when available
-- **Windows Compatibility**: When on Windows, assume Git Bash or WSL availability for bash execution
+**Constraints:**
+- The model MUST create bash shell scripts (.sh) exclusively
+- The model MUST NOT create .bat (batch) or .ps1 (PowerShell) scripts under any circumstances
+- The model SHOULD use bash commands that work on Linux, macOS, and Windows (WSL/Git Bash)
+- The model SHOULD prioritize bash/Unix commands over PowerShell commands when available
+- The model SHOULD assume Git Bash or WSL availability for bash execution on Windows systems
 
 ### Error Handling Strategy
-- **Simple Formula**: Error occurs → Provide suggestions → Ask user → Wait for explicit instruction → Execute
-- **User Decision Authority**: AI MUST NOT make assumptions about error handling preferences
-- **Transparency**: AI MUST provide clear error description and suggested options
-- **Safety First**: AI MUST NOT automatically retry or skip errors without user confirmation
+**Constraints:**
+- The model MUST follow the formula: Error occurs → Provide suggestions → Ask user → Wait for explicit instruction → Execute
+- The model MUST NOT make assumptions about user preferences for error handling
+- The model MUST provide clear error description and suggested options
+- The model MUST NOT automatically retry or skip errors without user confirmation
 
 ### User Interaction Principles
-- **Explicit Confirmation Required**: All significant actions require clear user approval
-- **No Assumptions**: Never assume user preferences for critical decisions
-- **Clear Communication**: Provide detailed descriptions of proposed actions
-- **Wait for Response**: Always wait for explicit user instruction before proceeding
+**Constraints:**
+- The model MUST require explicit user approval for all significant actions
+- The model MUST NOT assume user preferences for critical decisions
+- The model MUST provide detailed descriptions of proposed actions
+- The model MUST wait for explicit user instruction before proceeding
 
 ### File Operation Standards
-- **Atomic Updates**: All document updates must be atomic (all succeed or all fail)
-- **Backup Strategy**: Create backup versions before significant changes
-- **Path Consistency**: Use `.specs/` format consistently across all operations
-- **Validation**: Verify file integrity and consistency after operations
+**Constraints:**
+- The model MUST ensure all document updates are atomic (all succeed or all fail)
+- The model SHOULD create backup versions before significant changes
+- The model MUST use `.specs/` format consistently across all operations
+- The model MUST verify file integrity and consistency after operations
 
 ### Database Backup Rules
-- **Auto-execution**: If database configuration detected, execute backup immediately (NO asking)
-- **User Confirmation**: If no database configuration detected, MUST ask user for confirmation
-- **Never Skip**: NEVER skip database backup without user explicit confirmation
-- **Error Handling**: If backup fails, stop and provide solutions, ask user how to proceed
+**Constraints:**
+- The model MUST execute backup immediately if database configuration is detected (without asking)
+- The model MUST ask user for confirmation if no database configuration is detected
+- The model MUST NOT skip database backup without user explicit confirmation
+- The model MUST stop and provide solutions if backup fails, then ask user how to proceed
 
 ## Integration Guidelines
 ### Template Loading

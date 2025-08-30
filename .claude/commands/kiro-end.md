@@ -32,34 +32,30 @@ Completes feature development with document finalization, file archiving, summar
 ## Feature Completion Process
 
 ### Document Finalization
-```
-- MUST mark all tasks as completed in tasks.md
-- MUST update all SPECS documents to completed status
-- MUST validate requirement implementation coverage
-- MUST generate comprehensive summary.md
-```
+**Constraints:**
+- The model MUST mark all tasks as completed in tasks.md
+- The model MUST update all SPECS documents to completed status
+- The model MUST validate requirement implementation coverage
+- The model MUST generate comprehensive summary.md
 
 ### File Archiving Rules
-```
-- MUST move tests/ directory to .specs/{feature_name}/tests/
-- MUST move scripts/ directory to .specs/{feature_name}/scripts/
-- MUST move temp/ files to .specs/{feature_name}/temp/
-- MUST move analysis docs to .specs/{feature_name}/analysis/
-- MUST archive session.md as session-{date}.md in feature directory
-```
+**Constraints:**
+- The model MUST move tests/ directory to .specs/{feature_name}/tests/
+- The model MUST move scripts/ directory to .specs/{feature_name}/scripts/
+- The model MUST move temp/ files to .specs/{feature_name}/temp/
+- The model MUST move analysis docs to .specs/{feature_name}/analysis/
+- The model MUST archive session.md as session-{date}.md in feature directory
 
 ### Branch Management
-```
-- MUST commit all final changes
-- MUST create pull request OR merge to main (based on project workflow)
-- MUST clean up feature branch after successful merge
-- MUST ensure working directory is clean
-```
+**Constraints:**
+- The model MUST commit all final changes
+- The model MUST create pull request OR merge to main (based on project workflow)
+- The model SHOULD clean up feature branch after successful merge
+- The model MUST ensure working directory is clean
 
 ### Completion Validation
-```
-- MUST verify all requirements implemented
-- MUST validate all tasks completed
-- MUST ensure code quality standards met
-- MUST confirm deployment readiness
-```
+**Constraints:**
+- The model MUST verify all requirements implemented
+- The model MUST validate all tasks completed
+- The model SHOULD ensure code quality standards met
+- The model SHOULD confirm deployment readiness

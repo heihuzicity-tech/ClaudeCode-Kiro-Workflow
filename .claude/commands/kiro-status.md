@@ -30,28 +30,25 @@ Displays comprehensive project status including current feature, development sta
 ## Status Display Rules
 
 ### Status Collection
-```
-- MUST detect project using Glob search for .specs
-- MUST read session.md for current feature and stage
-- MUST read tasks.md for progress calculation
-- MUST check Git status and branch information
-- MUST validate status file consistency
-```
+**Constraints:**
+- The model MUST detect project using Glob search for .specs
+- The model MUST read session.md for current feature and stage
+- The model MUST read tasks.md for progress calculation
+- The model MUST check Git status and branch information
+- The model MUST validate status file consistency
 
 ### Progress Calculation
-```
-- MUST count completed vs total tasks
-- MUST calculate completion percentage
-- MUST identify current active task
-- MUST detect any blocked or problematic tasks
-```
+**Constraints:**
+- The model MUST count completed vs total tasks
+- The model MUST calculate completion percentage
+- The model MUST identify current active task
+- The model SHOULD detect any blocked or problematic tasks
 
 ### Display Format
-```
-- Feature name and description
-- Current development stage
-- Task progress (X/Y completed, Z% done)
-- Git branch and commit status
-- Next recommended action
-- Chinese language formatting
-```
+**Constraints:**
+- The model MUST display feature name and description
+- The model MUST show current development stage
+- The model MUST present task progress (X/Y completed, Z% done)
+- The model MUST display Git branch and commit status
+- The model MUST provide next recommended action
+- The model MUST use Chinese language formatting

@@ -34,17 +34,15 @@ Saves current development progress with Git checkpoint, session state persistenc
 ## Session State Management
 
 ### Progress Preservation Rules
-```
-- MUST capture current task completion status
-- MUST record all SPECS document states
-- MUST include working directory context
-- MUST preserve Git branch and commit information
-- MUST create comprehensive recovery instructions
-```
+**Constraints:**
+- The model MUST capture current task completion status
+- The model MUST record all SPECS document states
+- The model MUST include working directory context
+- The model MUST preserve Git branch and commit information
+- The model MUST create comprehensive recovery instructions
 
 ### Minimal Output Format
-```
-- Display: Feature name, current stage, progress percentage
-- Create: Session recovery prompt for next session
-- Provide: Clear continuation instructions
-```
+**Constraints:**
+- The model MUST display feature name, current stage, and progress percentage
+- The model MUST create session recovery prompt for next session
+- The model MUST provide clear continuation instructions

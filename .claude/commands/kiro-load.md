@@ -36,28 +36,25 @@ Restores saved session state with automatic rule reloading, project detection, s
 ## Context Recovery Rules
 
 ### Recovery Sequence
-```
-1. MUST read CLAUDE.md first (restore global configuration)
-2. MUST detect project root using Glob search
-3. MUST validate and read session.md file
-4. MUST verify and restore Git branch state
-5. MUST load all SPECS documents into context
-6. MUST display current status and next actions
-```
+**Constraints:**
+- The model MUST read CLAUDE.md first (restore global configuration)
+- The model MUST detect project root using Glob search
+- The model MUST validate and read session.md file
+- The model MUST verify and restore Git branch state
+- The model MUST load all SPECS documents into context
+- The model MUST display current status and next actions
 
 ### Session Validation
-```
-- MUST verify session file integrity
-- MUST validate timestamp and freshness
-- MUST check Git repository consistency
-- MUST confirm all referenced files exist
-- MUST handle missing or corrupted session data gracefully
-```
+**Constraints:**
+- The model MUST verify session file integrity
+- The model MUST validate timestamp and freshness
+- The model MUST check Git repository consistency
+- The model MUST confirm all referenced files exist
+- The model MUST handle missing or corrupted session data gracefully
 
 ### Context Restoration
-```
-- MUST restore feature name and current stage
-- MUST restore task progress and completion status
-- MUST restore file references and working directory
-- MUST restore project configuration and settings
-```
+**Constraints:**
+- The model MUST restore feature name and current stage
+- The model MUST restore task progress and completion status
+- The model MUST restore file references and working directory
+- The model MUST restore project configuration and settings
