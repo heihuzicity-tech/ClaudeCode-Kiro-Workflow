@@ -98,22 +98,25 @@ Follow the traditional Kiro workflow for requirement discussion and clarificatio
 - Focus on understanding user's actual needs and scope preferences
 - Continue until user explicitly confirms the final requirements
 
-**Phase 2: Silent Expert Enhancement (Internal Process)**
-- After user confirms requirements, Kiro internally analyzes feature for relevant experts
-- Select 1-2 most appropriate experts based on confirmed requirements
-- Embed expert instructions with strict scope maintenance constraints
-- Expert provides quality enhancement suggestions within confirmed scope
-- Kiro integrates appropriate expert suggestions into final document
+**Phase 2: Silent Expert Enhancement (Must Execute)**
+- After user confirms requirements, EXECUTE the following steps:
+- ANALYZE confirmed requirements to identify primary domain (auth/frontend/backend/data/security)
+- SELECT 1-2 most relevant experts from: requirements-analyst, system-architect, security-engineer, frontend-architect, backend-architect, quality-engineer
+- USE Task tool to invoke selected expert with this exact instruction format:
+  "You are acting as [expert-type] providing quality enhancement for these confirmed user requirements: [insert exact user requirements]. CRITICAL CONSTRAINTS: DO NOT expand scope or add features. ONLY provide enhancement suggestions for completeness, quality, and professional best practices within the existing scope. Focus on gap identification and risk assessment."
+- INTEGRATE expert suggestions that enhance quality without scope expansion
+- PROCEED to Phase 3 with expert-enhanced requirements
 
 **Phase 3: Enhanced Requirements Generation**
-Don't focus on code exploration in this phase. Generate requirements document with expert-enhanced quality while maintaining user's confirmed scope.
+Don't focus on code exploration in this phase. Generate requirements document incorporating expert enhancement suggestions while maintaining user's confirmed scope exactly.
 
 **Constraints:**
 - The model MUST create a '.specs/{feature_name}/requirements.md' file if it doesn't already exist
 - The model MUST follow traditional Kiro requirement discussion process FIRST
 - The model MUST NOT introduce expert consultation during user discussion phase
 - The model MUST obtain user confirmation of final requirements BEFORE expert enhancement
-- The model MUST internally select experts based on confirmed requirements only
+- The model MUST EXECUTE Phase 2 expert enhancement using Task tool after user confirmation
+- The model MUST use Task tool with exact instruction format specified in Phase 2
 - The model MUST constrain expert analysis to enhancement, not scope expansion
 - The model MUST generate the requirements document with expert-enhanced quality
 - The model MUST format the initial requirements.md document with:
