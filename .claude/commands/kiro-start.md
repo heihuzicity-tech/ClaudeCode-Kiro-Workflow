@@ -30,6 +30,43 @@ Initiates a new feature development workflow with automated safety checks, datab
 
 ## Requirements Workflow Integration
 
+### SUPERCLAUDE_EXPERT_ENHANCEMENT
+```
+**Expert Enhancement Engine** - Embedded SuperClaude Framework Integration
+After requirements confirmation, internally activate domain experts to enhance document quality and professional completeness:
+
+**Enhancement Timing**: AFTER user confirms final requirements, BEFORE document generation
+**User Experience**: Transparent to user - Kiro appears more professional, no direct expert interaction
+**Expert Role**: Backend quality enhancement, not frontend requirement discovery
+
+**Available Experts for Document Enhancement:**
+- **requirements-analyst**: Review requirement completeness and clarity
+- **system-architect**: Validate architectural feasibility and scalability
+- **security-engineer**: Identify security gaps and compliance requirements
+- **frontend-architect**: Review UI/UX requirement completeness
+- **backend-architect**: Validate data integrity and API design requirements
+- **quality-engineer**: Enhance testing strategy and quality criteria
+
+**Enhancement Process:**
+1. **Internal Analysis**: Kiro analyzes confirmed requirements for expert selection
+2. **Silent Consultation**: Embed expert instructions without user awareness
+3. **Quality Enhancement**: Expert reviews confirmed requirements for gaps and improvements
+4. **Kiro Integration**: Kiro filters and integrates expert suggestions appropriately
+5. **Enhanced Documentation**: Generate professional-quality requirements document
+
+**Expert Instruction Constraint:**
+You are acting as a [expert-type] providing backend quality enhancement for confirmed user requirements.
+CRITICAL CONSTRAINTS:
+- DO NOT redefine or expand the user's confirmed requirements scope
+- DO NOT add features beyond user's explicit needs
+- FOCUS ON: gap identification, risk assessment, quality improvement
+- OUTPUT: Professional suggestions for enhancing existing requirements
+- MAINTAIN: User's intended complexity level and scope boundaries
+
+Based on these confirmed user requirements: [insert user's final requirements]
+Provide quality enhancement suggestions that improve completeness without scope expansion.
+```
+
 ### SPEC_REQUIREMENTS_EXAMPLE
 ```md
 # Requirements Document
@@ -52,19 +89,40 @@ This section should have EARS requirements
 
 ### SPEC_WORKFLOW_REQUIREMENT_CLARIFICATION
 ```
-### 1. Requirement Gathering
-First, generate an initial set of requirements in EARS format based on the feature idea, then iterate with the user to refine them until they are complete and accurate.
-Don't focus on code exploration in this phase. Instead, just focus on writing requirements which will later be turned into
-a design.
+### 1. Traditional Kiro Requirement Gathering with Backend Expert Enhancement
+Follow the traditional Kiro workflow for requirement discussion and clarification. After user confirms final requirements, internally enhance document quality using relevant SuperClaude experts.
+
+**Phase 1: Standard Kiro Requirements Discussion**
+- Generate initial requirements based on user's feature request
+- Iterate with user through traditional Kiro discussion process
+- Focus on understanding user's actual needs and scope preferences
+- Continue until user explicitly confirms the final requirements
+
+**Phase 2: Silent Expert Enhancement (Internal Process)**
+- After user confirms requirements, Kiro internally analyzes feature for relevant experts
+- Select 1-2 most appropriate experts based on confirmed requirements
+- Embed expert instructions with strict scope maintenance constraints
+- Expert provides quality enhancement suggestions within confirmed scope
+- Kiro integrates appropriate expert suggestions into final document
+
+**Phase 3: Enhanced Requirements Generation**
+Don't focus on code exploration in this phase. Generate requirements document with expert-enhanced quality while maintaining user's confirmed scope.
+
 **Constraints:**
 - The model MUST create a '.specs/{feature_name}/requirements.md' file if it doesn't already exist
-- The model MUST generate an initial version of the requirements document based on the user's rough idea WITHOUT asking sequential questions first
+- The model MUST follow traditional Kiro requirement discussion process FIRST
+- The model MUST NOT introduce expert consultation during user discussion phase
+- The model MUST obtain user confirmation of final requirements BEFORE expert enhancement
+- The model MUST internally select experts based on confirmed requirements only
+- The model MUST constrain expert analysis to enhancement, not scope expansion
+- The model MUST generate the requirements document with expert-enhanced quality
 - The model MUST format the initial requirements.md document with:
   - A clear introduction section that summarizes the feature
   - A hierarchical numbered list of requirements where each contains:
     - A user story in the format "As a [role], I want [feature], so that [benefit]"
     - Acceptance criteria in EARS (Easy Approach to Requirements Syntax) format
-- The model MUST proceed to the design phase after the user accepts the requirements
+  - Quality enhancements from expert analysis (seamlessly integrated)
+- The model MUST proceed to the design phase after generating the enhanced requirements document
 ```
 
 ## Design Workflow Integration
