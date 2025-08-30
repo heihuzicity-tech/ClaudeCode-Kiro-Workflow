@@ -30,43 +30,6 @@ Initiates a new feature development workflow with automated safety checks, datab
 
 ## Requirements Workflow Integration
 
-### SUPERCLAUDE_EXPERT_ENHANCEMENT
-```
-**Expert Enhancement Engine** - Embedded SuperClaude Framework Integration
-After requirements confirmation, internally activate domain experts to enhance document quality and professional completeness:
-
-**Enhancement Timing**: AFTER user confirms final requirements, BEFORE document generation
-**User Experience**: Transparent to user - Kiro appears more professional, no direct expert interaction
-**Expert Role**: Backend quality enhancement, not frontend requirement discovery
-
-**Available Experts for Document Enhancement:**
-- **requirements-analyst**: Review requirement completeness and clarity
-- **system-architect**: Validate architectural feasibility and scalability
-- **security-engineer**: Identify security gaps and compliance requirements
-- **frontend-architect**: Review UI/UX requirement completeness
-- **backend-architect**: Validate data integrity and API design requirements
-- **quality-engineer**: Enhance testing strategy and quality criteria
-
-**Enhancement Process:**
-1. **Internal Analysis**: Kiro analyzes confirmed requirements for expert selection
-2. **Silent Consultation**: Embed expert instructions without user awareness
-3. **Quality Enhancement**: Expert reviews confirmed requirements for gaps and improvements
-4. **Kiro Integration**: Kiro filters and integrates expert suggestions appropriately
-5. **Enhanced Documentation**: Generate professional-quality requirements document
-
-**Expert Instruction Constraint:**
-You are acting as a [expert-type] providing backend quality enhancement for confirmed user requirements.
-CRITICAL CONSTRAINTS:
-- DO NOT redefine or expand the user's confirmed requirements scope
-- DO NOT add features beyond user's explicit needs
-- FOCUS ON: gap identification, risk assessment, quality improvement
-- OUTPUT: Professional suggestions for enhancing existing requirements
-- MAINTAIN: User's intended complexity level and scope boundaries
-
-Based on these confirmed user requirements: [insert user's final requirements]
-Provide quality enhancement suggestions that improve completeness without scope expansion.
-```
-
 ### SPEC_REQUIREMENTS_EXAMPLE
 ```md
 # Requirements Document
@@ -98,17 +61,16 @@ Follow the traditional Kiro workflow for requirement discussion and clarificatio
 - Focus on understanding user's actual needs and scope preferences
 - Continue until user explicitly confirms the final requirements
 
-**Phase 2: Silent Expert Enhancement (Must Execute)**
-- After user confirms requirements, EXECUTE the following steps:
-- ANALYZE confirmed requirements to identify primary domain (auth/frontend/backend/data/security)
-- SELECT 1-2 most relevant experts from: requirements-analyst, system-architect, security-engineer, frontend-architect, backend-architect, quality-engineer
-- USE Task tool to invoke selected expert with this exact instruction format:
-  "You are acting as [expert-type] providing quality enhancement for these confirmed user requirements: [insert exact user requirements]. CRITICAL CONSTRAINTS: DO NOT expand scope or add features. ONLY provide enhancement suggestions for completeness, quality, and professional best practices within the existing scope. Focus on gap identification and risk assessment."
-- INTEGRATE expert suggestions that enhance quality without scope expansion
-- PROCEED to Phase 3 with expert-enhanced requirements
+**Phase 2: Silent Expert Enhancement (Must Execute After User Confirmation)**
+After user confirms final requirements, you MUST execute the following steps:
+1. ANALYZE confirmed requirements to identify primary domain (auth/frontend/backend/data/security)
+2. SELECT 1-2 most relevant experts from: requirements-analyst, system-architect, security-engineer, frontend-architect, backend-architect, quality-engineer
+3. USE Task tool to invoke selected expert with this exact instruction:
+   "You are acting as [expert-type] providing quality enhancement for these confirmed user requirements: [insert exact user requirements]. CRITICAL CONSTRAINTS: DO NOT expand scope or add features. ONLY provide enhancement suggestions for completeness, quality, and professional best practices within the existing scope. Focus on gap identification and risk assessment."
+4. INTEGRATE expert suggestions that enhance quality without scope expansion
 
 **Phase 3: Enhanced Requirements Generation**
-Don't focus on code exploration in this phase. Generate requirements document incorporating expert enhancement suggestions while maintaining user's confirmed scope exactly.
+Generate requirements document incorporating expert enhancement suggestions while maintaining user's confirmed scope exactly.
 
 **Constraints:**
 - The model MUST create a '.specs/{feature_name}/requirements.md' file if it doesn't already exist
@@ -119,7 +81,7 @@ Don't focus on code exploration in this phase. Generate requirements document in
 - The model MUST use Task tool with exact instruction format specified in Phase 2
 - The model MUST constrain expert analysis to enhancement, not scope expansion
 - The model MUST generate the requirements document with expert-enhanced quality
-- The model MUST format the initial requirements.md document with:
+- The model MUST format the requirements document with:
   - A clear introduction section that summarizes the feature
   - A hierarchical numbered list of requirements where each contains:
     - A user story in the format "As a [role], I want [feature], so that [benefit]"
@@ -279,23 +241,10 @@ Do not make direct code changes yet. First establish or review the spec file tha
 
 ### REQUIREMENTS_RULE
 ```
-You are working on the requirements document. Follow traditional Kiro requirement discussion process, then enhance with expert analysis.
-
-**Phase 1: Standard Requirements Discussion**
-Ask the user to review the requirements and confirm if they are complete. 
-Make sure the requirements include clear user stories and acceptance criteria in EARS format.
-
-**Phase 2: Expert Enhancement (Must Execute After User Confirmation)**
-After user confirms final requirements, you MUST execute the following steps:
-1. ANALYZE confirmed requirements to identify primary domain (auth/frontend/backend/data/security)
-2. SELECT 1-2 most relevant experts from: requirements-analyst, system-architect, security-engineer, frontend-architect, backend-architect, quality-engineer
-3. USE Task tool to invoke selected expert with this exact instruction:
-   "You are acting as [expert-type] providing quality enhancement for these confirmed user requirements: [insert exact user requirements]. CRITICAL CONSTRAINTS: DO NOT expand scope or add features. ONLY provide enhancement suggestions for completeness, quality, and professional best practices within the existing scope. Focus on gap identification and risk assessment."
-4. INTEGRATE expert suggestions that enhance quality without scope expansion
-
-**Phase 3: Enhanced Document Generation**
-Create requirements.md file incorporating expert enhancement suggestions while maintaining user's confirmed scope exactly.
-Once complete, proceed to the design phase by creating or updating a design.md file that outlines the technical approach, architecture, data models, and component structure.
+You are working on the requirements document. Follow the workflow specified in SPEC_WORKFLOW_REQUIREMENT_CLARIFICATION section above.
+Execute all three phases: Standard Requirements Discussion → Expert Enhancement → Enhanced Document Generation.
+Make sure to execute Phase 2 expert enhancement using Task tool after user confirms requirements.
+Once requirements document is generated with expert enhancements, proceed to the design phase.
 ```
 
 ### DESIGN_RULE
