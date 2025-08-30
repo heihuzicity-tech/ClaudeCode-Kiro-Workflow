@@ -1,4 +1,4 @@
-# Kiro Load Command Template
+# Session Recovery Command
 
 ### KIRO_COMMAND_LOAD
 ```
@@ -24,4 +24,40 @@ Restores saved session state with automatic rule reloading, project detection, s
 - The model SHOULD detect and report any inconsistencies in session state
 - The model SHOULD provide recovery options if session state is incomplete
 - The model MAY ask for confirmation if significant time has elapsed since last save
+
+## Error Handling
+- The model MUST stop execution when encountering any error condition
+- The model MUST provide clear description of the error and suggested solutions  
+- The model MUST ask user for explicit instruction on how to proceed
+- The model MUST wait for user confirmation before attempting any error recovery actions
+- The model MUST NOT make assumptions about user preferences for error handling
+```
+
+## Context Recovery Rules
+
+### Recovery Sequence
+```
+1. MUST read CLAUDE.md first (restore global configuration)
+2. MUST detect project root using Glob search
+3. MUST validate and read session.md file
+4. MUST verify and restore Git branch state
+5. MUST load all SPECS documents into context
+6. MUST display current status and next actions
+```
+
+### Session Validation
+```
+- MUST verify session file integrity
+- MUST validate timestamp and freshness
+- MUST check Git repository consistency
+- MUST confirm all referenced files exist
+- MUST handle missing or corrupted session data gracefully
+```
+
+### Context Restoration
+```
+- MUST restore feature name and current stage
+- MUST restore task progress and completion status
+- MUST restore file references and working directory
+- MUST restore project configuration and settings
 ```

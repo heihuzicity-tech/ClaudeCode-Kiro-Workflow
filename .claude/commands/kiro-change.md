@@ -1,4 +1,4 @@
-# Kiro Change Command Template
+# Document Synchronization Command
 
 ### KIRO_COMMAND_CHANGE
 ```
@@ -26,4 +26,49 @@ Synchronizes discussion outcomes from /kiro-think sessions into relevant SPECS d
 - The model SHOULD highlight impact on current development progress and timeline
 - The model MAY ask for confirmation if changes significantly alter project scope
 - The model MAY suggest additional documents that might need updates for full consistency
+
+## Error Handling
+- The model MUST stop execution when encountering any error condition
+- The model MUST provide clear description of the error and suggested solutions  
+- The model MUST ask user for explicit instruction on how to proceed
+- The model MUST wait for user confirmation before attempting any error recovery actions
+- The model MUST NOT make assumptions about user preferences for error handling
+```
+
+## Document Synchronization Rules
+
+### Context Analysis
+```
+- MUST extract change requirements from conversation context
+- MUST identify affected SPECS documents
+- MUST determine scope and impact of changes
+- MUST preserve discussion rationale and decisions
+```
+
+### Atomic Update Process
+```
+1. Read all existing SPECS documents
+2. Generate updated document versions
+3. Display before/after comparisons
+4. Request user approval
+5. Apply all changes atomically
+6. Validate consistency across documents
+7. Commit changes with descriptive message
+```
+
+### Consistency Validation
+```
+- MUST ensure requirements ↔ design alignment
+- MUST ensure design ↔ tasks alignment  
+- MUST preserve requirement traceability
+- MUST maintain task hierarchy and numbering
+- MUST validate completed task status preservation
+```
+
+### Change Impact Assessment
+```
+- MUST highlight scope changes
+- MUST assess timeline impact
+- MUST identify affected completed tasks
+- MUST recommend additional updates if needed
 ```

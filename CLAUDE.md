@@ -73,6 +73,32 @@ Located in `templates/rules/`:
 - Ensure consistent file naming across all workflows
 - Preserve existing path patterns from original kiro_specs_templates.md
 
+## Global Behavioral Rules
+
+### Error Handling Strategy
+- **Simple Formula**: Error occurs → Provide suggestions → Ask user → Wait for explicit instruction → Execute
+- **User Decision Authority**: AI MUST NOT make assumptions about error handling preferences
+- **Transparency**: AI MUST provide clear error description and suggested options
+- **Safety First**: AI MUST NOT automatically retry or skip errors without user confirmation
+
+### User Interaction Principles
+- **Explicit Confirmation Required**: All significant actions require clear user approval
+- **No Assumptions**: Never assume user preferences for critical decisions
+- **Clear Communication**: Provide detailed descriptions of proposed actions
+- **Wait for Response**: Always wait for explicit user instruction before proceeding
+
+### File Operation Standards
+- **Atomic Updates**: All document updates must be atomic (all succeed or all fail)
+- **Backup Strategy**: Create backup versions before significant changes
+- **Path Consistency**: Use `.specs/` format consistently across all operations
+- **Validation**: Verify file integrity and consistency after operations
+
+### Database Backup Rules
+- **Auto-execution**: If database configuration detected, execute backup immediately (NO asking)
+- **User Confirmation**: If no database configuration detected, MUST ask user for confirmation
+- **Never Skip**: NEVER skip database backup without user explicit confirmation
+- **Error Handling**: If backup fails, stop and provide solutions, ask user how to proceed
+
 ## Integration Guidelines
 ### Template Loading
 Templates should be loaded in hierarchical order:

@@ -1,4 +1,4 @@
-# Kiro Save Command Template
+# Progress Save Command
 
 ### KIRO_COMMAND_SAVE
 ```
@@ -22,4 +22,29 @@ Saves current development progress with Git checkpoint, session state persistenc
 - The model SHOULD include timestamp in session file for reference
 - The model SHOULD provide clear instructions for using /kiro-load command
 - The model MAY include branch information and Git status in session file
+
+## Error Handling
+- The model MUST stop execution when encountering any error condition
+- The model MUST provide clear description of the error and suggested solutions  
+- The model MUST ask user for explicit instruction on how to proceed
+- The model MUST wait for user confirmation before attempting any error recovery actions
+- The model MUST NOT make assumptions about user preferences for error handling
+```
+
+## Session State Management
+
+### Progress Preservation Rules
+```
+- MUST capture current task completion status
+- MUST record all SPECS document states
+- MUST include working directory context
+- MUST preserve Git branch and commit information
+- MUST create comprehensive recovery instructions
+```
+
+### Minimal Output Format
+```
+- Display: Feature name, current stage, progress percentage
+- Create: Session recovery prompt for next session
+- Provide: Clear continuation instructions
 ```
