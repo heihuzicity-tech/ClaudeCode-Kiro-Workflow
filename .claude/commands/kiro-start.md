@@ -249,14 +249,42 @@ Once requirements document is generated with expert enhancements, proceed to the
 
 ### DESIGN_RULE
 ```
-You are working on the design document. Ask the user to review the design and confirm if it meets their expectations. 
-Ensure the design addresses all the requirements specified in the requirements document. 
-Once approved, proceed to create or update a tasks.md file with specific implementation tasks broken down into manageable steps.
+You are working on the design document. Follow enhanced design process with expert analysis.
+
+**Phase 1: Standard Design Discussion**
+Ask the user to review the design and confirm if it meets their expectations.
+Ensure the design addresses all the requirements specified in the requirements document.
+
+**Phase 2: Design Expert Enhancement (Must Execute After User Confirmation)**
+After user confirms final design, you MUST execute the following steps:
+1. ANALYZE confirmed design to identify primary domains (system-architecture/security/performance/frontend/backend)
+2. SELECT 1-2 most relevant experts from: system-architect, security-engineer, performance-engineer, frontend-architect, backend-architect
+3. USE Task tool to invoke selected expert with this exact instruction:
+   "You are acting as [expert-type] providing design quality enhancement for this confirmed design: [insert exact user design]. CRITICAL CONSTRAINTS: DO NOT expand scope or add features. ONLY provide enhancement suggestions for architectural quality, best practices, and risk mitigation within the existing design scope. Focus on design patterns, scalability, and maintainability improvements."
+4. INTEGRATE expert suggestions that enhance design quality without scope expansion
+
+**Phase 3: Enhanced Design Document Generation**
+Update design.md file incorporating expert enhancement suggestions while maintaining user's confirmed design scope exactly.
+Once complete, proceed to create or update a tasks.md file with specific implementation tasks broken down into manageable steps.
 ```
 
 ### IMPLEMENTATION_PLAN_RULE
 ```
-You are working on the implementation plan. Ask the user to review the plan and confirm if it covers all necessary tasks. 
-Ensure each task is actionable, references specific requirements, and focuses only on coding activities. 
-Once approved, inform the user that the spec is complete and they can begin implementing the tasks by opening the tasks.md file.
+You are working on the implementation plan. Follow enhanced planning process with expert analysis.
+
+**Phase 1: Standard Implementation Planning**
+Ask the user to review the plan and confirm if it covers all necessary tasks.
+Ensure each task is actionable, references specific requirements, and focuses only on coding activities.
+
+**Phase 2: Implementation Expert Enhancement (Must Execute After User Confirmation)**
+After user confirms final implementation plan, you MUST execute the following steps:
+1. ANALYZE confirmed tasks to identify quality improvement areas (testing/quality/performance/refactoring)
+2. SELECT 1-2 most relevant experts from: quality-engineer, performance-engineer, refactoring-expert, python-expert
+3. USE Task tool to invoke selected expert with this exact instruction:
+   "You are acting as [expert-type] providing implementation plan quality enhancement for these confirmed tasks: [insert exact user tasks]. CRITICAL CONSTRAINTS: DO NOT expand scope or add features. ONLY provide enhancement suggestions for task quality, testing strategy, and implementation best practices within the existing task scope. Focus on code quality, testing coverage, and development workflow improvements."
+4. INTEGRATE expert suggestions that enhance implementation quality without scope expansion
+
+**Phase 3: Enhanced Implementation Plan Generation**
+Update tasks.md file incorporating expert enhancement suggestions while maintaining user's confirmed task scope exactly.
+Once complete, inform the user that the spec is complete and they can begin implementing the tasks by opening the tasks.md file.
 ```
