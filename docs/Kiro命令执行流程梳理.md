@@ -127,7 +127,19 @@
 - 处理：Git add + commit
 - 输出：提交确认消息
 
-### 10. `/kiro-change` - 同步讨论结果到文档
+### 10. `/kiro-sync` - 同步讨论结果到文档
+
+### 11. `/kiro-fix` - Bug修复工作流
+**执行流程**：
+1. 检测当前功能上下文 → 创建 bugs/目录
+2. 生成问题文档 → bug-report.md, analysis.md
+3. 创建修复任务 → fix-tasks.md (状态: ACTIVE)
+4. 自然语言交流完成修复 → 更新状态为 VERIFIED
+
+**数据流转**：
+- 输入：bug名称
+- 创建：bugs/子目录、问题文档、修复任务
+- 输出：修复验证结果
 **执行流程**：
 1. 分析当前会话上下文 → 提取变更决策
 2. 识别需要更新的SPECS文档类型
@@ -154,7 +166,7 @@
 ```
 /kiro-save ↔ /kiro-load      （配对使用）
 /kiro-status ← 任何时候       （独立查看）
-/kiro-think → /kiro-change   （配对使用：分析→同步）
+/kiro-think → /kiro-sync     （配对使用：分析→同步）
 /kiro-git ← 开发过程         （独立提交）
 ```
 
@@ -207,5 +219,6 @@ design.md → start/next（设计引用）
 
 ### Think-Change 工作流
 - **`/kiro-think`**：深度分析问题，讨论解决方案（不修改文档）
-- **`/kiro-change`**：将讨论结果同步到 SPECS 文档（原子操作）
+- **`/kiro-sync`**：将讨论结果同步到 SPECS 文档（原子操作）
+- **`/kiro-fix`**：快速bug修复工作流（轻量级文档+单会话完成）
 - **配对使用**：先思考分析，再同步变更，确保变更的准确性

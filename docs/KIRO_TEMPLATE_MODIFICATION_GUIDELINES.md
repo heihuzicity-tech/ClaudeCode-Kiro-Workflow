@@ -76,7 +76,7 @@
 - **MUST ask user for confirmation if no database configuration is detected**
 - **MUST include general error handling section for all other errors**
 
-### **kiro-change Context Rules**
+### **kiro-sync Context Rules**
 - **MUST analyze current conversation context to extract change requirements**
 - **MUST provide before/after comparison before applying changes**
 - **MUST preserve completed task status when updating tasks.md**
@@ -107,7 +107,7 @@ templates/
 
 ### **Think → Change Pattern**
 - **`/kiro-think`**: Analyze problems, discuss solutions (no document changes)
-- **`/kiro-change`**: Apply discussed changes to SPECS documents
+- **`/kiro-sync`**: Apply discussed changes to SPECS documents
 - **These commands work as a pair**: think first, then change
 
 ### **Save → Load Pattern**

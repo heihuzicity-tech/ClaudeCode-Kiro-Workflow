@@ -28,7 +28,7 @@ ClaudeCode-Kiro-Workflow 是专为 Claude Code 设计的 AI 驱动开发工作�
 ## 核心特性
 
 1. **AI 引导工作流**：自动推进 需求 → 设计 → 任务 → 执行 各阶段
-2. **极简命令系统**：仅需使用 10 个核心命令
+2. **极简命令系统**：仅需使用 11 个核心命令（增加bug修复支持）
 3. **中文原生交互**：与 AI 进行自然流畅的中文对话
 4. **数据库自动备份**：开发前智能检测并主动备份数据库，防止数据丢失
 5. **Git 分支隔离**：自动创建功能分支，保护主分支不受影响
@@ -47,7 +47,8 @@ ClaudeCode-Kiro-Workflow 是专为 Claude Code 设计的 AI 驱动开发工作�
 ├── kiro-save.md          # 💾 进度保存 - 包含会话状态持久化逻辑
 ├── kiro-load.md          # 🔄 状态恢复 - 包含完整的上下文恢复逻辑
 ├── kiro-think.md         # 🧠 深度分析 - 包含多级分析和变更管理逻辑
-├── kiro-change.md        # 📝 文档同步 - 包含原子性文档更新逻辑
+├── kiro-sync.md          # 📝 文档同步 - 包含原子性文档更新逻辑
+├── kiro-fix.md           # 🐞 Bug修复 - 包含轻量级bug修复工作流
 ├── kiro-end.md           # 🏁 功能完成 - 包含归档和清理逻辑
 ├── kiro-info.md          # ℹ️  项目配置 - 包含项目信息管理逻辑
 ├── kiro-status.md        # 📊 状态显示 - 包含进度计算和状态报告逻辑
@@ -176,7 +177,7 @@ AI：恢复上次的工作状态...
 ```
 用户：/kiro-think 客户要求增加手机号登录
 AI：[分析变更影响]
-用户：/kiro-change
+用户：/kiro-sync
 AI：[更新相关文档] requirements.md, design.md, tasks.md
 ```
 
@@ -214,7 +215,8 @@ your-project/
 │       ├── kiro-save.md       # 💾 进度保存（包含会话管理）
 │       ├── kiro-load.md       # 🔄 状态恢复（包含上下文恢复）
 │       ├── kiro-think.md      # 🧠 深度分析（包含多级分析逻辑）
-│       ├── kiro-change.md     # 📝 文档同步（包含原子更新逻辑）
+│       ├── kiro-sync.md       # 📝 文档同步（包含原子更新逻辑）
+│       ├── kiro-fix.md        # 🐞 Bug修复（包含轻量级修复工作流）
 │       ├── kiro-end.md        # 🏁 功能完成（包含归档清理）
 │       ├── kiro-info.md       # ℹ️  项目配置（包含信息管理）
 │       ├── kiro-status.md     # 📊 状态显示（包含进度计算）
@@ -277,7 +279,7 @@ your-project/
 - **数据库备份失败**：检查数据库连接配置和权限
 - **Git分支冲突**：确保工作区干净后再开始新功能
 - **任务进度丢失**：使用 `kiro-load` 恢复之前的会话状态
-- **需求频繁变更**：使用 `kiro-think` + `kiro-change` 组合处理
+- **需求频繁变更**：使用 `kiro-think` + `kiro-sync` 组合处理
 
 ## 🤝 贡献指南
 
