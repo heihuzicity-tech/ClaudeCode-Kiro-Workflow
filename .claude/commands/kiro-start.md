@@ -52,19 +52,39 @@ This section should have EARS requirements
 
 ### SPEC_WORKFLOW_REQUIREMENT_CLARIFICATION
 ```
-### 1. Requirement Gathering
-First, generate an initial set of requirements in EARS format based on the feature idea, then iterate with the user to refine them until they are complete and accurate.
-Don't focus on code exploration in this phase. Instead, just focus on writing requirements which will later be turned into
-a design.
+### 1. Smart Requirements Enhancement
+Follow the traditional Kiro workflow for requirement discussion and clarification. After user confirms final requirements, optionally enhance document quality using AI-selected experts.
+
+**Phase 1: Standard Kiro Requirements Discussion**
+- Generate initial requirements based on user's feature request
+- Iterate with user through traditional Kiro discussion process
+- Focus on understanding user's actual needs and scope preferences
+- Continue until user explicitly confirms the final requirements
+
+**Phase 2: Expert Enhancement (Required for Testing)**
+After user confirms final requirements, enhance document quality using AI-selected experts:
+- Project context: Current working directory, tech stack inferred from project files  
+- AI selection: Choose the most appropriate expert(s) using your judgment
+- Expert instruction: "Enhance quality of these requirements within existing scope. Project context: {working_directory}. Focus only on completeness and best practices, do not expand scope."
+- Integration: Incorporate valuable suggestions while maintaining user's confirmed scope
+
+**Phase 3: Enhanced Requirements Generation**
+Generate requirements document with any expert enhancements seamlessly integrated.
+
 **Constraints:**
 - The model MUST create a '.specs/{feature_name}/requirements.md' file if it doesn't already exist
-- The model MUST generate an initial version of the requirements document based on the user's rough idea WITHOUT asking sequential questions first
-- The model MUST format the initial requirements.md document with:
+- The model MUST follow traditional Kiro requirement discussion process FIRST
+- The model MUST NOT introduce expert consultation during user discussion phase
+- The model MUST obtain user confirmation of final requirements BEFORE any expert enhancement
+- The model MAY use AI judgment to decide if expert enhancement adds value
+- The model SHOULD provide project context (working directory, tech stack) to any selected experts
+- The model MUST constrain any expert analysis to enhancement, not scope expansion
+- The model MUST format the requirements document with:
   - A clear introduction section that summarizes the feature
   - A hierarchical numbered list of requirements where each contains:
     - A user story in the format "As a [role], I want [feature], so that [benefit]"
     - Acceptance criteria in EARS (Easy Approach to Requirements Syntax) format
-- The model MUST proceed to the design phase after the user accepts the requirements
+- The model MUST proceed to the design phase after generating the requirements document
 ```
 
 ## Design Workflow Integration
@@ -218,22 +238,50 @@ Do not make direct code changes yet. First establish or review the spec file tha
 
 ### REQUIREMENTS_RULE
 ```
-You are working on the requirements document. Ask the user to review the requirements and confirm if they are complete. 
-Make sure the requirements include clear user stories and acceptance criteria in EARS format. 
-Once approved, proceed to the design phase by creating or updating a design.md file that outlines the technical approach, 
-architecture, data models, and component structure.
+You are working on the requirements document. Follow the smart workflow specified in SPEC_WORKFLOW_REQUIREMENT_CLARIFICATION section above.
+Execute: Standard Requirements Discussion → Optional Smart Expert Enhancement → Enhanced Document Generation.
+Use AI judgment to decide if expert enhancement adds value. If used, provide project context to experts.
+Once requirements document is generated, proceed to the design phase.
 ```
 
 ### DESIGN_RULE
 ```
-You are working on the design document. Ask the user to review the design and confirm if it meets their expectations. 
-Ensure the design addresses all the requirements specified in the requirements document. 
-Once approved, proceed to create or update a tasks.md file with specific implementation tasks broken down into manageable steps.
+You are working on the design document. Follow smart design process with optional expert enhancement.
+
+**Phase 1: Standard Design Discussion**
+Ask the user to review the design and confirm if it meets their expectations.
+Ensure the design addresses all the requirements specified in the requirements document.
+
+**Phase 2: Expert Enhancement (Required for Testing)**
+After user confirms final design, enhance document quality using AI-selected experts:
+- Project context: Current working directory, tech stack inferred from project files
+- AI selection: Choose the most appropriate expert(s) based on design characteristics
+- Provide project context: "Project path: {working_directory}. Tech stack: {inferred from files}."
+- Expert focus: Architectural quality, best practices, risk mitigation within existing scope
+- Integration: Incorporate valuable suggestions while maintaining user's confirmed design scope
+
+**Phase 3: Enhanced Design Document Generation**
+Update design.md file with any expert enhancements seamlessly integrated.
+Once complete, proceed to create implementation tasks.
 ```
 
 ### IMPLEMENTATION_PLAN_RULE
 ```
-You are working on the implementation plan. Ask the user to review the plan and confirm if it covers all necessary tasks. 
-Ensure each task is actionable, references specific requirements, and focuses only on coding activities. 
-Once approved, inform the user that the spec is complete and they can begin implementing the tasks by opening the tasks.md file.
+You are working on the implementation plan. Follow smart planning process with optional expert enhancement.
+
+**Phase 1: Standard Implementation Planning**
+Ask the user to review the plan and confirm if it covers all necessary tasks.
+Ensure each task is actionable, references specific requirements, and focuses only on coding activities.
+
+**Phase 2: Expert Enhancement (Required for Testing)**
+After user confirms final implementation plan, enhance document quality using AI-selected experts:
+- Project context: Current working directory, tech stack inferred from project files
+- AI selection: Choose the most appropriate expert(s) based on implementation characteristics
+- Provide project context: "Project path: {working_directory}. Tech stack: {inferred from files}."
+- Expert focus: Implementation quality, testing strategy, development best practices within existing scope
+- Integration: Incorporate valuable suggestions while maintaining user's confirmed task scope
+
+**Phase 3: Enhanced Implementation Plan Generation**
+Update tasks.md file with any expert enhancements seamlessly integrated.
+Once complete, inform the user that the spec is complete and they can begin implementing the tasks.
 ```

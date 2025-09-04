@@ -5,13 +5,17 @@
 Saves current development progress with Git checkpoint, session state persistence, and minimal status output for session recovery.
 
 **Constraints:**
-- The model MUST update tasks.md with current progress and task completion status
+- The model MUST update current task progress (feature tasks.md OR bug fix-tasks.md) and include relevant context
 - The model MUST perform silent Git commit with descriptive checkpoint message
+- The model MUST detect session type by scanning active directories and documents
 - The model MUST save comprehensive session state to '.specs/session.md'
 - The model MUST include current feature name and development stage in session file
+- The model MUST include bug fix context if bugs/ directories exist with ACTIVE status
 - The model MUST record latest completed task and current progress in session file
-- The model MUST list all relevant SPECS documents (requirements.md, design.md, tasks.md) in session file
+- The model MUST list all relevant SPECS documents (requirements.md, design.md, tasks.md) with status and modification info in session file
 - The model MUST include main project files and their descriptions in session file
+- The model MUST record key project files that have been modified or referenced during development
+- The model MUST include file modification timestamps and status for recovery reference
 - The model MUST specify current working directory in session file
 - The model MUST provide session recovery instructions in session file
 - The model MUST display minimal output showing feature, stage, and progress

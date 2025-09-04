@@ -54,7 +54,8 @@ Located in `templates/commands/`:
 - `kiro-status.md` - Project status display and progress calculation
 - `kiro-think.md` - Deep analysis and requirement change management
 - `kiro-git.md` - Quick Git commit operations
-- `kiro-change.md` - Synchronize discussion outcomes into SPECS documents
+- `kiro-sync.md` - Synchronize discussion outcomes into SPECS documents
+- `kiro-fix.md` - Bug fix workflow with lightweight documentation
 
 ### Rule Templates
 Located in `templates/rules/`:

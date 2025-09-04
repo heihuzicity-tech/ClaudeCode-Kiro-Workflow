@@ -5,6 +5,7 @@
 Executes the next uncompleted task from the tasks.md file with strict single-task focus and real-time progress tracking.
 
 **Constraints:**
+- The model MUST read .specs/project-info.md to load project context and information
 - The model MUST read all SPECS documents (requirements.md, design.md, tasks.md) before execution
 - The model MUST locate the next uncompleted task in the tasks.md file
 - The model MUST execute only ONE task at a time, never multiple tasks
