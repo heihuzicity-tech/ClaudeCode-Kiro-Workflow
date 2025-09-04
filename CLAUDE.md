@@ -12,6 +12,8 @@ All SPECS files are stored in: `.specs/{feature_name}/`
 ## Directory Organization
 ```
 .specs/
+├── analysis/              # Code analysis results (independent storage)
+│   └── code-analysis-{target}-{timestamp}.md  # AI expert analysis documents
 ├── {feature_name}/
 │   ├── requirements.md     # Requirements specification document
 │   ├── design.md          # Technical design and architecture
@@ -21,7 +23,6 @@ All SPECS files are stored in: `.specs/{feature_name}/`
 │   ├── tests/             # Archived test files from project root
 │   ├── scripts/           # Archived debug/utility scripts
 │   ├── temp/              # Archived temporary files
-│   ├── analysis/          # Archived analysis documents
 │   └── docs/              # Additional documentation
 ├── project-info.md         # Basic project information and context
 ├── session.md             # Current active session (before /kiro-end)

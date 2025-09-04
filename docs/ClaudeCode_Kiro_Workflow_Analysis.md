@@ -17,7 +17,7 @@ ClaudeCode-Kiro-Workflow 是一个专为 Claude Code 设计的**规范驱动开�
 
 ```
 架构特点：
-- 10个自包含命令 + 1个全局配置 = 完整系统
+- 12个自包含命令 + 1个全局配置 = 完整系统
 - 每个命令包含完整的执行逻辑、模板和约束条件
 - 零外部依赖，极简部署（仅需复制两个组件）
 - 中文原生交互，降低使用门槛
@@ -25,7 +25,7 @@ ClaudeCode-Kiro-Workflow 是一个专为 Claude Code 设计的**规范驱动开�
 
 ### 系统组件构成
 
-#### 核心命令系统（10个）
+#### 核心命令系统（12个）
 ```
 .claude/commands/
 ├── kiro-start.md    # 🚀 功能启动 - 需求/设计/任务一站式生成
@@ -35,6 +35,7 @@ ClaudeCode-Kiro-Workflow 是一个专为 Claude Code 设计的**规范驱动开�
 ├── kiro-think.md    # 🧠 深度分析 - 多级分析+需求变更管理
 ├── kiro-sync.md     # 📝 文档同步 - 原子性文档更新
 ├── kiro-fix.md      # 🐞 Bug修复 - 轻量级bug修复工作流
+├── kiro-analyze.md  # 🔍 代码分析 - AI智能代码分析+专家选择
 ├── kiro-end.md      # 🏁 功能完成 - 归档清理+分支管理
 ├── kiro-info.md     # ℹ️  项目配置 - 项目信息管理
 ├── kiro-status.md   # 📊 状态显示 - 进度计算+状态报告
