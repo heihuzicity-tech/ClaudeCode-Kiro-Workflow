@@ -42,6 +42,9 @@
       "Read(/E:\\workspace\\new-ClaudeCode-Kiro-Workflow\\docs/**)",
       "Read(/E:\\workspace\\new-ClaudeCode-Kiro-Workflow\\.claude\\commands/**)",
       "Read(/E:\\workspace\\new-ClaudeCode-Kiro-Workflow\\.claude\\commands/**)",
+      "Read(/E:\\workspace\\new-ClaudeCode-Kiro-Workflow/**)",
+      "Bash(git push:*)",
+      "Read(/E:\\workspace\\new-ClaudeCode-Kiro-Workflow\\.claude/**)",
       "Read(/E:\\workspace\\new-ClaudeCode-Kiro-Workflow/**)"
     ],
     "deny": [],
