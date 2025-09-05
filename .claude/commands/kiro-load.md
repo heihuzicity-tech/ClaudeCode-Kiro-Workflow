@@ -8,11 +8,11 @@ Restores saved session state with automatic rule reloading, project detection, s
 - The model MUST first read ./CLAUDE.md file to restore global rules and configuration after /clear commands
 - The model MUST detect project root directory using Glob search for .specs files
 - The model MUST execute Read tool on CLAUDE.md before any other file operations
-- The model MUST read .specs/project-info.md to restore project context and configuration
+- The model MUST read .specs/project-info.md for project context
 - The model MUST locate and validate existing .specs/session.md file with timestamp verification
 - The model MUST read .specs/session.md file content to restore session state and progress information
 - The model MUST verify current Git branch matches session state and switch if necessary
-- The model MUST load all SPECS documents (requirements.md, design.md, tasks.md) into context
+- The model MUST load all SPECS documents (.specs/{feature_name}/requirements.md, design.md, tasks.md) into context
 - The model MUST detect session type from session.md content
 - The model MUST restore complete working context by parsing session.md content for appropriate workflow type (feature development OR bug fix OR mixed)
 - The model MUST check bug fix status and recommend appropriate continuation
@@ -36,7 +36,7 @@ Error handling follows global constraints defined in CLAUDE.md
 ### Recovery Sequence
 **Constraints:**
 - The model MUST read CLAUDE.md first (restore global configuration)
-- The model MUST detect project root using Glob search
+- The model MUST detect project root directory using Glob search for .specs files
 - The model MUST validate and read session.md file
 - The model MUST verify and restore Git branch state
 - The model MUST load all SPECS documents into context

@@ -5,8 +5,8 @@
 Detects actual development progress from project files and synchronizes with SPECS documents to ensure documentation accuracy.
 
 **Constraints:**
-- The model MUST read .specs/project-info.md to load project context
-- The model MUST read all SPECS documents (requirements.md, design.md, tasks.md)
+- The model MUST read .specs/project-info.md for project context
+- The model MUST read all SPECS documents (.specs/{feature_name}/requirements.md, design.md, tasks.md)
 - The model MUST scan project files to detect actual implementation status
 - The model MUST compare documented task status with actual code implementation
 - The model MUST identify tasks marked incomplete but actually implemented in code

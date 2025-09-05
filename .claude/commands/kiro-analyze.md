@@ -5,7 +5,7 @@
 Performs intelligent code analysis with AI-powered expert agent selection, generating comprehensive documentation while focusing exclusively on understanding without code modifications.
 
 **Constraints:**
-- The model MUST read .specs/project-info.md to understand project technology stack and context
+- The model MUST read .specs/project-info.md for project context
 - The model MUST scan project structure to identify architecture patterns and programming language characteristics  
 - The model MUST analyze the specified analysis target to identify code characteristics, complexity, and functional domain
 - The model MUST use AI reasoning to dynamically select the most appropriate expert agent(s) based on:
@@ -37,7 +37,7 @@ Error handling follows global constraints defined in CLAUDE.md
 
 ### Context Analysis Rules
 **Constraints:**
-- The model MUST read project-info.md for technology stack identification
+- The model MUST read .specs/project-info.md for technology stack identification
 - The model MUST scan project structure using Glob tool to identify key directories and file patterns
 - The model MUST analyze analysis target characteristics using Read/Grep tools as needed
 - The model MUST synthesize project context, target characteristics, and user intent for reasoning
