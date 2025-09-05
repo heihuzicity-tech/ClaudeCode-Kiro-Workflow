@@ -5,7 +5,7 @@
 Performs intelligent code analysis with AI-powered expert agent selection, generating comprehensive documentation while focusing exclusively on understanding without code modifications.
 
 **Constraints:**
-- The model MUST read .specs/project-info.md for project context
+- The model MUST read .specs/project-info.md Essential Info section for project context
 - The model MUST scan project structure to identify architecture patterns and programming language characteristics  
 - The model MUST analyze the specified analysis target to identify code characteristics, complexity, and functional domain
 - The model MUST use AI reasoning to dynamically select the most appropriate expert agent(s) based on:

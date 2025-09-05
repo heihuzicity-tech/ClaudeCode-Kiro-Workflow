@@ -5,7 +5,7 @@
 Initiates bug fix workflow within existing feature context with lightweight documentation and single-session completion.
 
 **Constraints:**
-- The model MUST read .specs/project-info.md for project context
+- The model MUST read .specs/project-info.md Essential Info section for project context
 - The model MUST detect current feature from session.md or prompt user to specify feature name
 - The model MUST read existing feature SPECS documents (.specs/{feature_name}/requirements.md, design.md, tasks.md) for context
 - The model MUST ensure Git working directory is clean before starting bug fix
