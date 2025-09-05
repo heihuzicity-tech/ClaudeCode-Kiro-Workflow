@@ -5,9 +5,12 @@
 Executes the next uncompleted task from the tasks.md file with strict single-task focus and real-time progress tracking.
 
 **Constraints:**
-- The model MUST read .specs/project-info.md for project context
-- The model MUST read all SPECS documents (.specs/{feature_name}/requirements.md, design.md, tasks.md) before execution
-- The model MUST locate the next uncompleted task in the tasks.md file
+- The model MUST read .specs/project-info.md Essential Info section for core project context
+- The model MUST read tasks.md to locate the next uncompleted task
+- The model MUST selectively read relevant sections from requirements.md and design.md based on current task scope
+- The model SHOULD read complete SPECS documents only when current task requires comprehensive context understanding
+- The model SHOULD prioritize task-specific information over complete documentation coverage
+- The model MAY defer reading detailed background information until specific implementation decisions require it
 - The model MUST execute only ONE task at a time, never multiple tasks
 - The model MUST implement the task according to requirements and design specifications
 - The model MUST update the task status in tasks.md in real-time during execution
@@ -33,7 +36,7 @@ Error handling follows global constraints defined in CLAUDE.md
 ```
 Follow these instructions for user requests related to spec tasks. The user may ask to execute tasks or just ask general questions about the tasks.
 ## Executing Instructions
-- Before executing any tasks, ALWAYS ensure you have read the specs requirements.md, design.md and tasks.md files. Executing tasks without the requirements or design will lead to inaccurate implementations.
+- Before executing any tasks, ALWAYS ensure you have read the relevant sections from specs requirements.md, design.md and tasks.md files. Focus on task-specific information to maintain context efficiency while ensuring accurate implementations.
 - Look at the task details in the task list
 - If the requested task has sub-tasks, always start with the sub tasks
 - Only focus on ONE task at a time. Do not implement functionality for other tasks.
@@ -49,13 +52,14 @@ For example, the user may want to know what the next task is for a particular fe
 
 ## Single Task Execution Rules
 
-### Task Focus Constraint
+### Context-Optimized Task Focus Constraint
 **Constraints:**
 - The model MUST execute only ONE task at a time
-- The model MUST read all SPECS documents before starting any task
-- The model MUST validate implementation against requirements
+- The model MUST read relevant SPECS document sections before starting any task
+- The model MUST validate implementation against task-specific requirements
 - The model MUST stop after completing each task and wait for user confirmation
 - The model MUST NOT automatically proceed to next task
+- The model SHOULD prioritize essential information over comprehensive documentation coverage
 
 ### Progress Tracking Rules
 **Constraints:**

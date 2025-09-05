@@ -33,6 +33,19 @@ Error handling follows global constraints defined in CLAUDE.md
 
 ## Session State Management
 
+### Context-Optimized Session Generation
+**Constraints:**
+- The model MUST structure session.md with essential information prioritized at top
+- The model MUST limit core status section to essential context only (target < 500 tokens)
+- The model MUST use collapsible sections for detailed historical information
+- The model MUST organize session.md in the following structure:
+  - ## Current Focus (核心状态 - 必读): Active feature, current task, progress, Git branch
+  - ## Next Actions (关键行动 - 必读): Immediate next tasks only
+  - ## Technical Context (技术上下文 - 按需): Key dependencies and critical decisions
+  - ## Detailed History (详细历史 - 归档): Complete session log in collapsible section
+- The model MUST include only actionable next steps, not comprehensive task history
+- The model SHOULD prioritize information needed for quick session recovery
+
 ### Progress Preservation Rules
 **Constraints:**
 - The model MUST capture current task completion status

@@ -24,14 +24,20 @@ Error handling follows global constraints defined in CLAUDE.md
 
 ## Project Configuration Rules
 
-### Project Information Structure
+### Context-Optimized Project Information Structure
 **Constraints:**
-- The model MUST include project name and description
-- The model MUST specify technology stack and frameworks
-- The model MUST document key requirements and constraints  
-- The model SHOULD include directory structure and organization
-- The model SHOULD document development environment setup
-- The model MAY include testing and deployment information
+- The model MUST structure project-info.md with essential information prioritized at top
+- The model MUST organize project-info.md in the following layered structure:
+  - ## Essential Info (基础信息 - 必读): Project type, tech stack, development stage (target < 300 tokens)
+  - ## Technical Configuration (技术配置 - 按需): Framework details, build config, environment info
+  - ## Project Background (项目背景 - 参考): Comprehensive description in collapsible section
+- The model MUST limit essential info section to immediately actionable technical information
+- The model MUST use collapsible sections for detailed configuration and background information
+- The model MUST include project name and core technology stack in essential section
+- The model MUST specify key requirements and constraints in essential section
+- The model SHOULD include directory structure and organization in technical configuration
+- The model SHOULD document development environment setup in technical configuration
+- The model MAY include detailed testing and deployment information in collapsible background section
 
 ### .gitignore Configuration
 **Constraints:**
