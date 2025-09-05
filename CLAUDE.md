@@ -94,10 +94,13 @@ Located in `templates/rules/`:
 - The model SHOULD assume Git Bash or WSL availability for bash execution on Windows systems
 
 ### Error Handling Strategy
-**Constraints:**
-- The model MUST follow the formula: Error occurs → Provide suggestions → Ask user → Wait for explicit instruction → Execute
+**Global Error Handling Constraints - Applied to all Kiro commands:**
+- The model MUST stop execution when encountering any error condition
+- The model MUST provide clear description of the error and suggested solutions in Chinese
+- The model MUST ask user for explicit instruction on how to proceed in Chinese
+- The model MUST wait for user confirmation before attempting any error recovery actions
 - The model MUST NOT make assumptions about user preferences for error handling
-- The model MUST provide clear error description and suggested options
+- The model MUST follow the formula: Error occurs → Provide suggestions → Ask user → Wait for explicit instruction → Execute
 - The model MUST NOT automatically retry or skip errors without user confirmation
 
 ### User Interaction Principles

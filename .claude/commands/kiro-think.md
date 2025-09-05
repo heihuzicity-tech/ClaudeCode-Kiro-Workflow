@@ -23,11 +23,7 @@ Activates multi-level deep analysis mode for complex problem solving, requiremen
 - The model MAY escalate to higher thinking levels for particularly complex problems
 
 ## Error Handling
-- The model MUST stop execution when encountering any error condition
-- The model MUST provide clear description of the error and suggested solutions  
-- The model MUST ask user for explicit instruction on how to proceed
-- The model MUST wait for user confirmation before attempting any error recovery actions
-- The model MUST NOT make assumptions about user preferences for error handling
+Error handling follows global constraints defined in CLAUDE.md
 ```
 
 ## Deep Analysis Framework
