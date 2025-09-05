@@ -5,9 +5,12 @@
 Detects actual development progress from project files and synchronizes with SPECS documents to ensure documentation accuracy.
 
 **Constraints:**
-- The model MUST read .specs/project-info.md for project context
-- The model MUST read all SPECS documents (.specs/{feature_name}/requirements.md, design.md, tasks.md)
-- The model MUST scan project files to detect actual implementation status
+- The model MUST read .specs/project-info.md Essential Info section for core project context
+- The model MUST read tasks.md to obtain current task completion status and identify files mentioned in tasks
+- The model MUST selectively scan only project files referenced in active or completed tasks
+- The model SHOULD read relevant sections from requirements.md and design.md only when task discrepancies require context validation
+- The model SHOULD defer comprehensive SPECS document reading until specific synchronization conflicts are identified
+- The model MAY use task-based file filtering to optimize implementation scanning scope
 - The model MUST compare documented task status with actual code implementation
 - The model MUST identify tasks marked incomplete but actually implemented in code
 - The model MUST identify tasks marked complete but missing actual implementation
@@ -25,12 +28,14 @@ Detects actual development progress from project files and synchronizes with SPE
 
 ## Progress Detection Rules
 
-### Implementation Scanning
+### Context-Optimized Implementation Scanning
 **Constraints:**
-- The model MUST analyze code files for completed functionality
-- The model MUST check for existence of functions, classes, and components mentioned in tasks
-- The model MUST detect working features vs stub implementations
-- The model MUST identify new code that doesn't map to existing tasks
+- The model MUST analyze only code files referenced or mentioned in tasks.md for completed functionality
+- The model MUST check for existence of functions, classes, and components mentioned in specific tasks
+- The model MUST detect working features vs stub implementations within task-defined scope
+- The model MUST identify new code that doesn't map to existing tasks within scanned file scope
+- The model SHOULD expand scanning scope only when task-referenced files reveal additional dependencies
+- The model SHOULD prioritize files with recent modifications when multiple files match task descriptions
 
 ### Status Comparison
 **Constraints:**
